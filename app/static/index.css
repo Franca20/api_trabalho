@@ -16,13 +16,43 @@ body {
     padding: 0;
 }
 
+.topbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #757575, #c0c0c0);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    z-index: 10;
+}
+
+.hamburger {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.logo {
+    font-weight: bold;
+    letter-spacing: 0.04em;
+}
+
+.container {
+    padding: 20px;
+}
+
 .card {
     background-color: var(--cor-one);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px auto;
-    max-width: 400px;
+    max-width: 520px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,11 +65,68 @@ body {
 }
 
 .input-index {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid var(--cor-two);
     border-radius: 4px;
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 100%;
+    background: #f5f5f5;
+    box-shadow: 2px 0 14px rgba(0,0,0,0.15);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: left 0.26s ease;
+    z-index: 15;
+}
+
+.nav-menu.open {
+    left: 0;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.8);
+    transition: background 0.2s ease;
+}
+
+.nav-menu a:hover {
+    background: #e0e0e0;
+}
+
+.menu-close {
+    align-self: flex-end;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.32);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 12;
+}
+
+.menu-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #sugestoes mark { background: #ffea8a; color: #000; padding: 0 2px; border-radius: 2px; }
