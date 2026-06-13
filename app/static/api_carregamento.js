@@ -1,29 +1,5 @@
-// motoristas.js
-async function carregarMotoristas() {
-  try {
-    const resp = await fetch('/api/carregamento', { cache: 'no-store' });
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    return await resp.json();
-  } catch (err) {
-    console.error('Erro ao buscar dados de carregamento:', err);
-    return [];
-  }
-}
-
-function escapeHtml(s) {
-  return String(s ?? '')
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;')
-    .replace(/'/g,'&#039;');
-}
-
-function debounce(fn, wait) {
-  let t = null;
-  return (...args) => {
-    clearTimeout(t);
-    t = setTimeout(() => fn(...args), wait);
-  };
-}
+// api_carregamento.js
+// Sugestões para a aba de carregamento (fetch /api/carregamento)
 
 document.addEventListener('DOMContentLoaded', () => {
   const campo = document.getElementById('consulta');
@@ -32,11 +8,39 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // scoped helpers for 'carregamento' module
+  async function carregarMotoristas() {
+    try {
+      const resp = await fetch('/api/carregamento', { cache: 'no-store' });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      return await resp.json();
+    } catch (err) {
+      console.error('Erro ao buscar dados de carregamento:', err);
+      return [];
+    }
+  }
+
+  function escapeHtml(s) {
+    return String(s ?? '')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#039;');
+  }
+
+  function debounce(fn, wait) {
+    let t = null;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), wait);
+    };
+  }
+
   let registros = [];
-  let sugestBox = document.getElementById('sugestoes');
+  let sugestBox = document.getElementById('sugestoes-carregamento');
   if (!sugestBox) {
     sugestBox = document.createElement('div');
-    sugestBox.id = 'sugestoes';
+    sugestBox.id = 'sugestoes-carregamento';
     sugestBox.setAttribute('role', 'listbox');
     sugestBox.style.marginTop = '6px';
     sugestBox.style.maxWidth = '720px';
@@ -102,24 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const qEsc = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const qEsc = q.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&');
     const re = new RegExp(`(${qEsc})`, 'ig');
 
     const html = items.map(it => {
       const r = it.rec;
       const key = it.type === 'driver' ? escapeHtml(r.driver) : escapeHtml(r.plates.join(', '));
       const highlightedKey = key.replace(re, '<mark>$1</mark>');
-      return `
-        <div role="option" style="padding:8px; cursor:pointer; border-radius:6px; margin-bottom:6px; border:1px solid #f0f0f0;">
-          <div style="font-weight:700; font-size:0.95em;">${highlightedKey}</div>
-          <div style="margin-top:4px; font-size:0.9em; color:#333;">
-            <div><strong>Motorista:</strong> ${escapeHtml(r.driver)}</div>
-            <div><strong>Station Name:</strong> ${escapeHtml(r.station)}</div>
-            <div><strong>Schedule Arrival Time:</strong> ${escapeHtml(r.schedule)}</div>
-            <div><strong>CPT Type:</strong> ${escapeHtml(r.cpt)}</div>
-          </div>
-        </div>
-      `;
+      return `\n        <div role="option" style="padding:8px; cursor:pointer; border-radius:6px; margin-bottom:6px; border:1px solid #f0f0f0;">\n          <div style="font-weight:700; font-size:0.95em;">${highlightedKey}</div>\n          <div style="margin-top:4px; font-size:0.9em; color:#333;">\n            <div><strong>Motorista:</strong> ${escapeHtml(r.driver)}</div>\n            <div><strong>Station Name:</strong> ${escapeHtml(r.station)}</div>\n            <div><strong>Schedule Arrival Time:</strong> ${escapeHtml(r.schedule)}</div>\n            <div><strong>CPT Type:</strong> ${escapeHtml(r.cpt)}</div>\n          </div>\n        </div>\n      `;
     }).join('');
     sugestBox.innerHTML = html;
     sugestBox.style.display = 'block';

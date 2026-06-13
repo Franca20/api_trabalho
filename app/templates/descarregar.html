@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de motoristas</title>
+    <title>Consulta de dados</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
     <div class="topbar">
         <button id="menu-btn" class="hamburger" aria-label="Abrir menu">☰</button>
-        <span class="logo">Motoristas a carregar</span>
+        <span class="logo">Consulta descarregamento</span>
     </div>
     <nav class="nav-menu" id="side-menu" aria-label="Menu principal">
         <button id="menu-close" class="menu-close" aria-label="Fechar menu">×</button>
-        <a href="/">Consulta de dados</a>
-        <a href="/motoristas">Motoristas a carregar</a>
+        <a href="/">Motorista a descarregar</a>
+        <a href="/carregar">Motoristas a carregar</a>
     </nav>
     <div class="menu-overlay" id="menu-overlay"></div>
 
     <div class="container">
         <div class="card">
-            <label class="label-index">Consultar dados de motorista</label>
-            <input id="consulta" class="input-index" type="text" placeholder="Digite nome do motorista ou placa">
+            <label class="label-index">Motorista a descarregar</label>
+            <input id="consulta" class="input-index" type="text" placeholder="Digite sua consulta">
         </div>
     </div>
+    <script defer src="{{ url_for('static', filename='api_descarregamento.js') }}"></script>
     <script defer src="{{ url_for('static', filename='menu.js') }}"></script>
-    <script defer src="{{ url_for('static', filename='motoristas.js') }}"></script>
 </body>
 </html>

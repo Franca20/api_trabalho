@@ -59,8 +59,8 @@ def csv_to_json(input_path, output_path, station_number=None, encoding="utf-8-si
 
 
 def main():
-	default_input = Path(__file__).parent / "dados_carregamento.csv"
-	default_output = Path(__file__).parent / "dados_carregamento.json"
+	default_input = Path(__file__).parent / "carregamento.csv"
+	default_output = Path(__file__).parent / "carregamento.json"
 
 	parser = argparse.ArgumentParser(description="Converter CSV de carregamento para JSON")
 	parser.add_argument("--input", "-i", default=str(default_input), help="Caminho do CSV de entrada")

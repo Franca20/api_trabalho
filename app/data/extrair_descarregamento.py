@@ -240,11 +240,11 @@ if __name__ == "__main__":
 	import json
 	base = Path(__file__).parent
 
-	arquivo_csv = Path(base / 'data.csv')
+	arquivo_csv = Path(base / 'descarregamento.csv')
 	dados = extrair_dados_filtrados(arquivo_csv)
 
 	try:
-		with open(base / 'dados.json', 'w') as file:
+		with open(base / 'descarregamento.json', 'w') as file:
 			data = json.dumps(dados, indent=4)
 			file.write(data)
 	except:

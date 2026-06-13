@@ -214,6 +214,11 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+# files pessoais
+test.js
+test.html
+
+
 # Streamlit
 <<<<<<< HEAD
 .streamlit/secrets.toml
