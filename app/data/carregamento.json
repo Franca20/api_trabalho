@@ -1,467 +1,19 @@
 [
   {
-    "LH Trip Number": "LT0Q6F028BHT1",
+    "LH Trip Number": "LT0Q6G028BHU1",
     "Station Number": "1",
     "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "RNM3B52,FTS0C71",
-    "Driver": "[575623]JOSERLEY MARTINS RODRIGUES",
-    "Schedule Arrival Time": "15/06/2026 11:30"
+    "Vehicle Plate Number": "BDD5F16,TAX3D71",
+    "Driver": "[119391]ADILSON PEREIRA DE SOUZA",
+    "Schedule Arrival Time": "16/06/2026 11:30"
   },
   {
-    "LH Trip Number": "LT0Q6F028A6O1",
+    "LH Trip Number": "LT0Q6G028EZU1",
     "Station Number": "1",
     "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "IUS0E57,FSP9D54",
-    "Driver": "[159906]RODRIGO DE OLIVEIRA SANT ANA",
-    "Schedule Arrival Time": "15/06/2026 12:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028J6W1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "RYM4F44",
-    "Driver": "[3446311]FELIPE LOPES DE ANDRADE",
-    "Schedule Arrival Time": "15/06/2026 13:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F0289QN1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AXN2A62,ONW5F15",
-    "Driver": "[616414]Henrique Rissardi",
-    "Schedule Arrival Time": "15/06/2026 13:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028K751",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "FOQ5B24,SXR8D90",
-    "Driver": "[2962063]ALEXANDRE MENDES PEREIRA",
-    "Schedule Arrival Time": "15/06/2026 12:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028FGH1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "MIU3G04",
-    "Driver": "[3293900]GUILHERME FABRICIO BRANCO",
-    "Schedule Arrival Time": "15/06/2026 13:30"
-  },
-  {
-    "LH Trip Number": "LT1Q6F028R351",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AXO6D36,AXT6A88",
-    "Driver": "[2530210]TIAGO ALEX SANDRO MENDES AYRES",
-    "Schedule Arrival Time": "15/06/2026 13:00"
-  },
-  {
-    "LH Trip Number": "LT1Q6F028QO21",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AXN8A03,AXN2C08",
-    "Driver": "[1119489]EDUARDO APARECIDO FATORETO",
-    "Schedule Arrival Time": "15/06/2026 13:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028DLI1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "SEF6I47",
-    "Driver": "[3376586]AGUIMAR DE MATOS BRITO",
-    "Schedule Arrival Time": "15/06/2026 15:00"
-  },
-  {
-    "LH Trip Number": "LT1Q6F028QPC1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "EVW1G64,FCJ8I31",
-    "Driver": "[2397697]MARCELO PADILHA SPECIAN",
-    "Schedule Arrival Time": "15/06/2026 14:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028CF21",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "RHQ2B47",
-    "Driver": "[73939]ADEMIR MAXIMINO DE LIMA",
-    "Schedule Arrival Time": "15/06/2026 16:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028G9E1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AZA7H55,GNS2G00",
-    "Driver": "[678103]VAGNER JOSE RODRIGUES",
-    "Schedule Arrival Time": "15/06/2026 15:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028DEY1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "EJZ8E44",
-    "Driver": "[119016]Bruno Felipe da Silva Guiotto",
-    "Schedule Arrival Time": "15/06/2026 17:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028DY01",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "OTF2C28,BEA9F29",
-    "Driver": "[1643201]JOAO CORREIA RICO",
-    "Schedule Arrival Time": "15/06/2026 16:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028M471",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "FAT4G32",
-    "Driver": "[197708]Everton Basniak",
-    "Schedule Arrival Time": "15/06/2026 17:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028E2X1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "GGI1I74,AZV3I61",
-    "Driver": "[220090]JOSE MARIA DA SILVA",
-    "Schedule Arrival Time": "15/06/2026 16:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028CFG1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "FTI4D71",
-    "Driver": "[43274]MATHEUS DE OLIVEIRA DA SILVA",
-    "Schedule Arrival Time": "15/06/2026 18:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028E2N1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "MGO3E58",
-    "Driver": "[276591]LUIZ REINALDO BASQUERA",
-    "Schedule Arrival Time": "15/06/2026 18:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028EPR1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "RYQ9I12,TBD0J79",
-    "Driver": "[3438783]DANIEL BORBA GOMES",
-    "Schedule Arrival Time": "15/06/2026 17:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028J8W1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "ITR4A66,KHZ9E12",
-    "Driver": "[1269454]GABRIEL DINIZ VOLETE",
-    "Schedule Arrival Time": "15/06/2026 17:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028JFL1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AZQ7C10",
-    "Driver": "[91727]MARCIO NESPOLO",
-    "Schedule Arrival Time": "15/06/2026 18:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028I5P1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "RLM8A56,MEX0B98",
-    "Driver": "[2286909]ALVARO FRANCISCO POHLMANN",
-    "Schedule Arrival Time": "15/06/2026 18:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028DQ01",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "RYD2C16,TPU4D21",
-    "Driver": "[132703]WILLIAN SILVA DUARTE",
-    "Schedule Arrival Time": "15/06/2026 18:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028GDE1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "SDU3B02",
-    "Driver": "[1119064]ALEANDRO ALEX DE SOUZA",
-    "Schedule Arrival Time": "15/06/2026 19:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028JAX1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "MLK5F31,BCI3E09",
-    "Driver": "[529861]DIMAS ANTONIO BUENO DE LIMA JUNIOR",
-    "Schedule Arrival Time": "15/06/2026 18:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F0288AC1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "CVN5A22,QJY6A23",
-    "Driver": "[1598094]CLERIO LUIS DE RE",
-    "Schedule Arrival Time": "15/06/2026 20:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028AGT1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AXF4I66,ADT6J00",
-    "Driver": "[138449]RODOLFO FERREIRA",
-    "Schedule Arrival Time": "15/06/2026 19:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028AJQ1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "ATA1H83,GSV9C64",
-    "Driver": "[2707309]JEOVALDO DA CUNHA SODRE",
-    "Schedule Arrival Time": "15/06/2026 20:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F0288AM1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "QHL9F29,ARC9F29",
-    "Driver": "[252257]PAULO CLAUDIMIR STANOGA",
-    "Schedule Arrival Time": "15/06/2026 20:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F02893J1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AVC5C22,RAH9H67",
-    "Driver": "[177181]MARCOS MILDEMBERGER",
-    "Schedule Arrival Time": "15/06/2026 20:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F0289Y01",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "IZQ4E40,SXK4C40",
-    "Driver": "[771703]MOISES LUIZ DA COSTA",
-    "Schedule Arrival Time": "15/06/2026 20:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028EZZ1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "GGR9F35",
-    "Driver": "[3600357]JOEL DOS SANTOS",
-    "Schedule Arrival Time": "15/06/2026 21:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028HU61",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AZS1592",
-    "Driver": "[2864662]GELSON DE LARA",
-    "Schedule Arrival Time": "15/06/2026 21:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028DP41",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "UBG6H34,UBI8D44",
-    "Driver": "[3253379]MARCELO VOLF",
-    "Schedule Arrival Time": "15/06/2026 21:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028CHL1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "RYV9A88,SXZ4G25",
-    "Driver": "[3138849]CARLO DE PAULA GODOIS",
-    "Schedule Arrival Time": "15/06/2026 22:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028G9H1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AZA7J99,EDH7C94",
-    "Driver": "[140014]MAURO ELIAQUIM HORZEY DE SOUZA",
-    "Schedule Arrival Time": "15/06/2026 22:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028JT91",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "IYV3I12,JDF7J33",
-    "Driver": "[804919]LUCAS RAMOS",
-    "Schedule Arrival Time": "15/06/2026 22:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028MOL1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "GGC6C85",
-    "Driver": "[152831]Derivaldo Santana da Costa",
-    "Schedule Arrival Time": "15/06/2026 23:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028FI31",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "NGC1D43,RYP9I64",
-    "Driver": "[943080]Andre Moreira",
-    "Schedule Arrival Time": "15/06/2026 22:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028ATH1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "TBW9D79",
-    "Driver": "[2618627]SERGIO RENATO KOWALSCHUK",
-    "Schedule Arrival Time": "15/06/2026 23:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028HUC1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "RLJ4A12",
-    "Driver": "[589122]JONATAS EMANUEL SOARES",
-    "Schedule Arrival Time": "15/06/2026 23:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028J6Z1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "IQV5I89",
-    "Driver": "[276427]JEFFERSON DA SILVA LACERDA",
-    "Schedule Arrival Time": "15/06/2026 23:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028DXV1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "MHM0H19",
-    "Driver": "[3301052]JOSE FABIO DOS SANTOS BARBOSA",
-    "Schedule Arrival Time": "16/06/2026 00:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028EPU1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "OUL3B98,EDH7C94",
-    "Driver": "[783042]JULIO CESAR CORDEIRO COUTO",
-    "Schedule Arrival Time": "15/06/2026 23:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6F028E2E1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "MIG8993,NVX9D73",
-    "Driver": "[333720]VINICIUS BARBOZA LEITE",
-    "Schedule Arrival Time": "15/06/2026 23:30"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028JAN1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "PZL6G83",
-    "Driver": "[3697072]JONATHAN FARIAS",
-    "Schedule Arrival Time": "16/06/2026 01:01"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028J8M1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "MJF7H37",
-    "Driver": "[2785712]ANTONIO SERGIO DOS SANTOS",
-    "Schedule Arrival Time": "16/06/2026 01:31"
-  },
-  {
-    "LH Trip Number": "LT0Q6G02893C1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AOU8F71,SFH0D79",
-    "Driver": "[182593]ADENILSON SOARES",
-    "Schedule Arrival Time": "16/06/2026 01:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028CGE1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "EWU2F58,AXZ9J96",
-    "Driver": "[411864]FABIO MARTINS DE OLIVEIRA",
-    "Schedule Arrival Time": "16/06/2026 01:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028FTO1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "FXX2A52,FSG3E02",
-    "Driver": "[137161]MATEUS DOS SANTOS LIMA",
-    "Schedule Arrival Time": "16/06/2026 01:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028AJM1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AWE3B27",
-    "Driver": "[94123]ADILSON GORDIANO",
-    "Schedule Arrival Time": "16/06/2026 04:01"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028CHV1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "ISZ0340",
-    "Driver": "[23940]JORANDY JOE ANDREATTA RODRIGUES",
-    "Schedule Arrival Time": "16/06/2026 05:32"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028M431",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "PBY6E10",
-    "Driver": "[2486671]WANDERLEY VIEIRA DE OLIVEIRA",
-    "Schedule Arrival Time": "16/06/2026 06:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028CGV1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "MIM9C43,AXT9B18",
-    "Driver": "[3598831]ERINALDO ALVES SIQUEIRA",
-    "Schedule Arrival Time": "16/06/2026 06:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028EXO1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "AWZ0F94",
-    "Driver": "[2709691]ALEXANDRE VIEL FELICIO",
-    "Schedule Arrival Time": "16/06/2026 07:02"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028EPL1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "ACS3J60,RHH3B73",
-    "Driver": "[3793643]LEANDRO POTRICK",
-    "Schedule Arrival Time": "16/06/2026 08:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028FHW1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "IZP0B60,RDX5E32",
-    "Driver": "[1244919]WESLEY FRANCESCHI BORGES DE OLIVEIRA",
-    "Schedule Arrival Time": "16/06/2026 08:00"
-  },
-  {
-    "LH Trip Number": "LT0Q6G028JSS1",
-    "Station Number": "1",
-    "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "BEZ7D10,TAR2H00",
-    "Driver": "[2908616]WANDERSON CESAR CURIMBABA",
-    "Schedule Arrival Time": "16/06/2026 08:00"
+    "Vehicle Plate Number": "PPX9E28",
+    "Driver": "[214622]MARTIN ANTONIO DE OLIVEIRA",
+    "Schedule Arrival Time": "16/06/2026 13:02"
   },
   {
     "LH Trip Number": "LT0Q6G028DDG1",
@@ -469,30 +21,782 @@
     "Station Name": "SoC_PR_Curitiba",
     "Vehicle Plate Number": "HMK0E10",
     "Driver": "[144611]SILVIO APARECIDO RODRIGUES",
-    "Schedule Arrival Time": "16/06/2026 10:01"
+    "Schedule Arrival Time": "16/06/2026 13:01"
   },
   {
-    "LH Trip Number": "LT0Q6G028MOG1",
+    "LH Trip Number": "LT0Q6G028GD51",
     "Station Number": "1",
     "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "OUQ4C07",
-    "Driver": "[967029]RENATO RODRIGUES DE OLIVEIRA",
-    "Schedule Arrival Time": "16/06/2026 10:00"
+    "Vehicle Plate Number": "FRT2E88,UBV2A12",
+    "Driver": "[1931662]PAULO CESAR KANCZEWSKI",
+    "Schedule Arrival Time": "16/06/2026 12:01"
   },
   {
-    "LH Trip Number": "LT0Q6G028B2M1",
+    "LH Trip Number": "LT0Q6G028FGI1",
     "Station Number": "1",
     "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "MJV0E60,QJN0F91",
-    "Driver": "[3281272]ANDERSON JOSE LEAL",
-    "Schedule Arrival Time": "16/06/2026 10:00"
+    "Vehicle Plate Number": "BDU8B24",
+    "Driver": "[1484952]IGOR JOSE YEGER",
+    "Schedule Arrival Time": "16/06/2026 13:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028BCM1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "QIS8J57,FCE7J16",
+    "Driver": "[154808]JOELSON BARBOSA",
+    "Schedule Arrival Time": "16/06/2026 13:02"
+  },
+  {
+    "LH Trip Number": "LT1Q6G028RT11",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "BEZ7D10,TAR2H00",
+    "Driver": "[2908616]WANDERSON CESAR CURIMBABA",
+    "Schedule Arrival Time": "16/06/2026 13:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028JAS1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ASA7J51",
+    "Driver": "[627907]CARLOS ADRIANO CUSTODIO",
+    "Schedule Arrival Time": "16/06/2026 14:30"
+  },
+  {
+    "LH Trip Number": "LT1Q6G028RUO1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "RLE3I13,TJO7B35",
+    "Driver": "[3749647]AROALDO RIBEIRO MAXIMO",
+    "Schedule Arrival Time": "16/06/2026 15:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028JDX1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "BAP3B31",
+    "Driver": "[175904]MARIO MARQUES DE OLIVEIRA",
+    "Schedule Arrival Time": "16/06/2026 15:01"
+  },
+  {
+    "LH Trip Number": "LT1Q6G028RLZ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "RYV8G99,TQA8G99",
+    "Driver": "[3435243]RONALDO FARIA DE SOUZA",
+    "Schedule Arrival Time": "16/06/2026 14:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028AGN1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "QIL1G59,BDW7I96",
+    "Driver": "[2868759]JAILTON JACINTO DE SOUZA",
+    "Schedule Arrival Time": "16/06/2026 15:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028CF41",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "FTI4D71",
+    "Driver": "[43274]MATHEUS DE OLIVEIRA DA SILVA",
+    "Schedule Arrival Time": "16/06/2026 16:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028E2J1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "MGO3E58",
+    "Driver": "[276591]LUIZ REINALDO BASQUERA",
+    "Schedule Arrival Time": "16/06/2026 16:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028DOT1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "BEI6A12",
+    "Driver": "[3131360]MARCEL BOER",
+    "Schedule Arrival Time": "16/06/2026 16:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028J8S1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "MIW3A74,AUS4G80",
+    "Driver": "[2015685]SERGIO NERI GOMES",
+    "Schedule Arrival Time": "16/06/2026 15:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G0289AG1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "CUD8H85,FFN3A10",
+    "Driver": "[158242]DIMIZIO RIBEIRO DE VASCONCELOS",
+    "Schedule Arrival Time": "16/06/2026 16:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028DEZ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "EJZ8E44",
+    "Driver": "[119016]Bruno Felipe da Silva Guiotto",
+    "Schedule Arrival Time": "16/06/2026 17:00"
   },
   {
     "LH Trip Number": "LT0Q6G028LLW1",
     "Station Number": "1",
     "Station Name": "SoC_PR_Curitiba",
-    "Vehicle Plate Number": "EMT1I82,TIQ8C23",
-    "Driver": "[2997454]MARCOS AURELIO DE SOUSA DONATO",
-    "Schedule Arrival Time": "16/06/2026 10:00"
+    "Vehicle Plate Number": "TPJ8G78,TPK4A26",
+    "Driver": "[137606]JOSE WILLIAN GONCALVES",
+    "Schedule Arrival Time": "16/06/2026 16:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G0289491",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "MHP5H61,PFH0A34",
+    "Driver": "[172889]VALDIR SANGI SALDANHA",
+    "Schedule Arrival Time": "16/06/2026 16:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028BFG1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ESU7B95,AYP4F34",
+    "Driver": "[3087276]CLEBIO ALVES DE CARVALHO",
+    "Schedule Arrival Time": "16/06/2026 16:32"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028GDC1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "SDU3B02",
+    "Driver": "[1119064]ALEANDRO ALEX DE SOUZA",
+    "Schedule Arrival Time": "16/06/2026 17:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G0288A41",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AOU1099",
+    "Driver": "[137085]SILAS GUILHERME ALVES BURATI",
+    "Schedule Arrival Time": "16/06/2026 18:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028AGQ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "FOS4J60,RLB8C48",
+    "Driver": "[231416]REGINALDO BARBOSA BRITO",
+    "Schedule Arrival Time": "16/06/2026 17:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028BM11",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "SUV5J58,UBK7G29",
+    "Driver": "[298929]GETERSON CARLOS GOUVEIA BONFIM",
+    "Schedule Arrival Time": "16/06/2026 18:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028E2O1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "BBX3F01",
+    "Driver": "[3023082]RICHARD GOMES TEODORO",
+    "Schedule Arrival Time": "16/06/2026 18:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028EPS1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "SEH5D85,BEX7I35",
+    "Driver": "[3803612]FABIO DA SILVA",
+    "Schedule Arrival Time": "16/06/2026 17:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028BD61",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AUX4A63,AZE4F35",
+    "Driver": "[3502221]MURILO REGIS",
+    "Schedule Arrival Time": "16/06/2026 17:32"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028JAE1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "NLV4I49,ASO9061",
+    "Driver": "[1855376]ALEXANDRE PEREIRA MODESTO SCHIMERSKI",
+    "Schedule Arrival Time": "16/06/2026 17:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028B2U1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "IUS0E57,FSP9D54",
+    "Driver": "[159906]RODRIGO DE OLIVEIRA SANT ANA",
+    "Schedule Arrival Time": "16/06/2026 18:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028H241",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ANQ5J26,AKQ2A05",
+    "Driver": "[631943]PAULINHO CAMARA MONTEIRO",
+    "Schedule Arrival Time": "16/06/2026 18:01"
+  },
+  {
+    "LH Trip Number": "LT1Q6G028R8G1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ANO3D45,NGH3B42",
+    "Driver": "[182776]MARCELO PORTO DA SILVA",
+    "Schedule Arrival Time": "16/06/2026 18:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028CHA1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "PBY6E10,SUA8A36",
+    "Driver": "[2486671]WANDERLEY VIEIRA DE OLIVEIRA",
+    "Schedule Arrival Time": "16/06/2026 18:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028JT31",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AZB1D85,FSE1E47",
+    "Driver": "[1359251]EDEGAR GRANDI",
+    "Schedule Arrival Time": "16/06/2026 18:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G0288AK1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "BDR9A02,MDO1D96",
+    "Driver": "[1464855]LEONILSO SOARES",
+    "Schedule Arrival Time": "16/06/2026 18:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028DP31",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "UBG6H34",
+    "Driver": "[3253379]MARCELO VOLF",
+    "Schedule Arrival Time": "16/06/2026 19:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028DQ11",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "EYL1J64,FWP1B85",
+    "Driver": "[1569707]ALAN DA SILVA MARTINS",
+    "Schedule Arrival Time": "16/06/2026 18:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028JAY1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "BDZ4E01,MLG6G77",
+    "Driver": "[1712589]GABRIEL SENENN",
+    "Schedule Arrival Time": "16/06/2026 18:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028JFN1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "RAG7J98,BAE7162",
+    "Driver": "[2257171]GILSON JOSE MULLER",
+    "Schedule Arrival Time": "16/06/2026 18:33"
+  },
+  {
+    "LH Trip Number": "LT0Q6G02893G1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AWA9F11,UBZ3G20",
+    "Driver": "[310940]JOAO LAMBARET FILHO",
+    "Schedule Arrival Time": "16/06/2026 18:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6G0288AE1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "IVD0233",
+    "Driver": "[659205]AGUINALDO GIROTTO MARTIN",
+    "Schedule Arrival Time": "16/06/2026 20:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028AGU1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AXF4I66,ADT6J00",
+    "Driver": "[138449]RODOLFO FERREIRA",
+    "Schedule Arrival Time": "16/06/2026 19:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028CG31",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "TLH5J57,TJY9D48",
+    "Driver": "[2423236]PEDRO EDUARDO DA CRUZ",
+    "Schedule Arrival Time": "16/06/2026 19:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028JAF1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AQL8E07,AYP4F34",
+    "Driver": "[1516080]ADILSON LAZARO DA SILVA",
+    "Schedule Arrival Time": "16/06/2026 19:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028GDG1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ACS3J60,RHH3B73",
+    "Driver": "[3793643]LEANDRO POTRICK",
+    "Schedule Arrival Time": "16/06/2026 19:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6G0288SJ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AZZ3E62,UBF0H23",
+    "Driver": "[74219]REGINALDO SIQUEIRA PROENCIO",
+    "Schedule Arrival Time": "16/06/2026 20:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028AJR1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AQK2J83,AXW3A15",
+    "Driver": "[2959497]RONE DA SILVEIRA",
+    "Schedule Arrival Time": "16/06/2026 20:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G0288AN1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "QHL9F29,ARC9F29",
+    "Driver": "[252257]PAULO CLAUDIMIR STANOGA",
+    "Schedule Arrival Time": "16/06/2026 20:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G02893K1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ATX9C50,FJP9A34",
+    "Driver": "[1118275]RODRIGO APARECIDO HENRIQUE",
+    "Schedule Arrival Time": "16/06/2026 20:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028ATL1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AXG4747",
+    "Driver": "[120354]FABIO MACHADO BISCARO",
+    "Schedule Arrival Time": "16/06/2026 21:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028HU51",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AZS1592",
+    "Driver": "[2864662]GELSON DE LARA",
+    "Schedule Arrival Time": "16/06/2026 21:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G02893V1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "BBX3J54,MIX7C03",
+    "Driver": "[140555]MARCIO DOS SANTOS DE OLIVEIRA",
+    "Schedule Arrival Time": "16/06/2026 21:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6G0289QP1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "EJY5G20,FWV4D74",
+    "Driver": "[136634]CLEYTON WHOCHINGTON SANTANA",
+    "Schedule Arrival Time": "16/06/2026 21:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6G0289Y11",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "RYU0H79,RHB6D67",
+    "Driver": "[1926236]LUCAS ALBERTI",
+    "Schedule Arrival Time": "16/06/2026 21:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028FI41",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "REB0A06,SXP2G56",
+    "Driver": "[135682]ANDRE LUIZ ALVES",
+    "Schedule Arrival Time": "16/06/2026 22:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028G9I1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "DVL2C82,TKG7G12",
+    "Driver": "[1219146]ALEXANDRE VALENTIM DE DEUS",
+    "Schedule Arrival Time": "16/06/2026 22:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028JTA1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "FCT8H47,TRB4B83",
+    "Driver": "[3271182]SILVIO RODRIGO BREDOW HOFFMANN",
+    "Schedule Arrival Time": "16/06/2026 22:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028B2X1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AUW0B70,TAS4F74",
+    "Driver": "[153359]PAULO CEZAR PEREIRA",
+    "Schedule Arrival Time": "16/06/2026 22:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028ATI1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "TBW9D79",
+    "Driver": "[2618627]SERGIO RENATO KOWALSCHUK",
+    "Schedule Arrival Time": "16/06/2026 23:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028HUD1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "RLJ4A12",
+    "Driver": "[589122]JONATAS EMANUEL SOARES",
+    "Schedule Arrival Time": "16/06/2026 23:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028MOD1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "OUQ4C07",
+    "Driver": "[967029]RENATO RODRIGUES DE OLIVEIRA",
+    "Schedule Arrival Time": "17/06/2026 00:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028E2F1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "MIG8993,NVX9D73",
+    "Driver": "[333720]VINICIUS BARBOZA LEITE",
+    "Schedule Arrival Time": "16/06/2026 23:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6G028J731",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "IOD6C47,ALR7B86",
+    "Driver": "[793337]VOLNEI DE BORBA",
+    "Schedule Arrival Time": "16/06/2026 23:31"
+  },
+  {
+    "LH Trip Number": "LT0Q6H0288ZM1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "CVP8J70",
+    "Driver": "[682984]EDMILSON CORREIA DE SOUZA",
+    "Schedule Arrival Time": "17/06/2026 01:02"
+  },
+  {
+    "LH Trip Number": "LT0Q6H0288ZO2",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AWE3B27",
+    "Driver": "[94123]ADILSON GORDIANO",
+    "Schedule Arrival Time": "17/06/2026 01:02"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028DJW1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ARD2490",
+    "Driver": "[76273]DAVID EDUARDO MELNEK",
+    "Schedule Arrival Time": "17/06/2026 01:03"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028DJY2",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "TAJ7D48",
+    "Driver": "[783472]MAURICIO BERTAPELI",
+    "Schedule Arrival Time": "17/06/2026 01:03"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028EPB1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AIL8E04,AIL7B95",
+    "Driver": "[528134]SERGIO BORBA",
+    "Schedule Arrival Time": "17/06/2026 00:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028JDN1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "IZZ8A45,NJK0I66",
+    "Driver": "[3846660]FLAVIO DE CARVALHO FIRMINO",
+    "Schedule Arrival Time": "17/06/2026 00:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028LLQ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "EML5D62,UFN6E36",
+    "Driver": "[146512]DOUGLAS PONCIANO DE OLIVEIRA",
+    "Schedule Arrival Time": "17/06/2026 00:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028FTP1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "QIE9C22,TBK3C62",
+    "Driver": "[892562]ALLYSON PEREIRA",
+    "Schedule Arrival Time": "17/06/2026 01:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028JAQ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "MIF2I95,ANT5J83",
+    "Driver": "[1321988]VINICIUS BERNARDO BLOEMER ELIAS",
+    "Schedule Arrival Time": "17/06/2026 01:02"
+  },
+  {
+    "LH Trip Number": "LT0Q6H02893E1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AVC5C22,RAH9H67",
+    "Driver": "[177181]MARCOS MILDEMBERGER",
+    "Schedule Arrival Time": "17/06/2026 02:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028AGJ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "IYC5D87,BBP5A57",
+    "Driver": "[193225]EVERSON SOUSA LEMOS",
+    "Schedule Arrival Time": "17/06/2026 02:02"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028CGM1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "RHW1F85,MIX6A11",
+    "Driver": "[47118]JACKSON DE SOUSA",
+    "Schedule Arrival Time": "17/06/2026 02:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028FHP1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "IZP0B60,RDX5E32",
+    "Driver": "[1244919]WESLEY FRANCESCHI BORGES DE OLIVEIRA",
+    "Schedule Arrival Time": "17/06/2026 02:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028JSL1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "TQX0B48,TRE1I38",
+    "Driver": "[2186792]ANDERSON DA SILVA RAMOS",
+    "Schedule Arrival Time": "17/06/2026 02:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028N431",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "FGE9H85",
+    "Driver": "[2518232]AIRTON QUEIROZ DE SOUZA",
+    "Schedule Arrival Time": "17/06/2026 03:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028EPF1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "GAK9G63,TBX6C40",
+    "Driver": "[3800321]ADILSON FRANCO PEREIRA DO AMARAL",
+    "Schedule Arrival Time": "17/06/2026 03:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028AJN1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "BDR9A02,MDO1D96",
+    "Driver": "[1464855]LEONILSO SOARES",
+    "Schedule Arrival Time": "17/06/2026 04:02"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028BF31",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "BCA0E16,BCA0093",
+    "Driver": "[705074]IVERSON ALVES CARVALHO",
+    "Schedule Arrival Time": "17/06/2026 04:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028CGQ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AXJ5E44,ABJ7C40",
+    "Driver": "[184161]LUIZ CLAUDIO FURLAN",
+    "Schedule Arrival Time": "17/06/2026 04:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028JDS1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "TME8D82,FJP9A91",
+    "Driver": "[136442]RODRIGO JOSE BARBOZA",
+    "Schedule Arrival Time": "17/06/2026 04:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H0289Q31",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "CVN5A22,QJY6A23",
+    "Driver": "[1598094]CLERIO LUIS DE RE",
+    "Schedule Arrival Time": "17/06/2026 05:02"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028B2I1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "MJV0E60,QJN0F91",
+    "Driver": "[3281272]ANDERSON JOSE LEAL",
+    "Schedule Arrival Time": "17/06/2026 05:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028FHT1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "QJJ8J37,UAW6A98",
+    "Driver": "[3041955]JOHNATAN GOMES FERREIRA",
+    "Schedule Arrival Time": "17/06/2026 05:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028LLU1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ASP5F18,RDM3F67",
+    "Driver": "[915885]DIEGO DANIEL BARUFALDI",
+    "Schedule Arrival Time": "17/06/2026 05:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028CHZ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ISZ0340,NBH9E81",
+    "Driver": "[23940]JORANDY JOE ANDREATTA RODRIGUES",
+    "Schedule Arrival Time": "17/06/2026 05:30"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028CGX1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "APN6G63,SFL4C75",
+    "Driver": "[3527596]RAFAEL XAVIER",
+    "Schedule Arrival Time": "17/06/2026 06:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028EPI1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "ATK0I84,ASO9061",
+    "Driver": "[1236222]EMERSON DE OLIVEIRA MARTINS",
+    "Schedule Arrival Time": "17/06/2026 06:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028FTR1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "OBB6B33,MLC7B26",
+    "Driver": "[1147981]DEVILLY RODRIGUES DE MOURA CHAVES",
+    "Schedule Arrival Time": "17/06/2026 06:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028JSQ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "JCO3E28,JDG8A27",
+    "Driver": "[3067125]Marco Antonio de Azevedo",
+    "Schedule Arrival Time": "17/06/2026 06:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028DDF1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "JBS0H38",
+    "Driver": "[3627531]ALAN ALEX WEILER",
+    "Schedule Arrival Time": "17/06/2026 08:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028FHY1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "QJS8D77,SXU1F60",
+    "Driver": "[969625]SAMOEL BATISTA",
+    "Schedule Arrival Time": "17/06/2026 09:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028JSU1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "TRB7J01,TRB7D16",
+    "Driver": "[2162091]RODRIGO GOULART GARCIA",
+    "Schedule Arrival Time": "17/06/2026 09:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028BLZ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "AWX0B98,BCH6H02",
+    "Driver": "[1007410]AMAURI JOAO HUK SOUZA",
+    "Schedule Arrival Time": "17/06/2026 10:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028CH81",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "TPR3H40,RYU8J46",
+    "Driver": "[2382348]XAVIER MANUEL MARTINEZ OLIVERO",
+    "Schedule Arrival Time": "17/06/2026 10:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028DDJ1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "SEP7H16,SEN5I56",
+    "Driver": "[194497]LUCAS IAGUELLA",
+    "Schedule Arrival Time": "17/06/2026 10:00"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028GD31",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "NZG8B73,RLD3J86",
+    "Driver": "[2571395]MARCELO GRITLET",
+    "Schedule Arrival Time": "17/06/2026 10:01"
+  },
+  {
+    "LH Trip Number": "LT0Q6H028KHV1",
+    "Station Number": "1",
+    "Station Name": "SoC_PR_Curitiba",
+    "Vehicle Plate Number": "QII8D83,TRC7H71",
+    "Driver": "[283812]ROBERVALDO DA SILVA FREZ",
+    "Schedule Arrival Time": "17/06/2026 10:00"
   }
 ]
