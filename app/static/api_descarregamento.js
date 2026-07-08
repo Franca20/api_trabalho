@@ -2,12 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const campo = document.getElementById('consulta');
   const lista = document.getElementById('lista-descarregar');
   const status = document.getElementById('status-descarregar');
+  const modal = document.getElementById('modal-confirmacao');
+  const modalMensagem = document.getElementById('modal-mensagem');
+  const modalConfirmar = document.getElementById('modal-confirmar');
+  const modalCancelar = document.getElementById('modal-cancelar');
 
-  if (!campo || !lista || !status) {
+  if (!campo || !lista || !status || !modal || !modalMensagem || !modalConfirmar || !modalCancelar) {
     return;
   }
 
   let registros = [];
+  let motoristaParaConcluir = null;
 
   function escapeHtml(value) {
     return String(value ?? '')
@@ -85,16 +90,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function abrirModalConfirmacao(item) {
+    motoristaParaConcluir = item;
+    const nomeMotorista = item.driver || 'este motorista';
+    modalMensagem.textContent = `Deseja mesmo descer ${nomeMotorista}?`;
+    console.debug('[modal] abrir:', nomeMotorista);
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharModalConfirmacao() {
+    console.debug('[modal] fechar');
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    motoristaParaConcluir = null;
+  }
+
   async function concluirMotorista(lt) {
     const item = registros.find((registro) => registro.lt === lt);
     if (!item) return;
 
-    const nomeMotorista = item.driver || 'este motorista';
-    const confirmar = window.confirm(`Deseja mesmo descer ${nomeMotorista}?`);
-    if (!confirmar) {
-      status.textContent = 'Operação cancelada.';
-      return;
+    console.debug('[action] solicitar concluir lt=', lt);
+    abrirModalConfirmacao(item);
+  }
+
+  modalCancelar.addEventListener('click', (e) => {
+    console.debug('[modal] cancelar click', e);
+    fecharModalConfirmacao();
+  });
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      fecharModalConfirmacao();
     }
+  });
+
+  modalConfirmar.addEventListener('click', async (e) => {
+    console.debug('[modal] confirmar click', e);
+    if (!motoristaParaConcluir) return;
+
+    const item = motoristaParaConcluir;
+    fecharModalConfirmacao();
 
     try {
       const response = await fetch('/api/descarregar/concluir', {
@@ -106,14 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const resultado = await response.json();
       if (!response.ok) throw new Error(resultado.message || 'Erro ao concluir');
 
-      registros = registros.filter((registro) => registro.lt !== lt);
+      registros = registros.filter((registro) => registro.lt !== item.lt);
       renderLista(campo.value);
       status.textContent = resultado.message;
     } catch (error) {
       console.error('Erro ao concluir motorista:', error);
       status.textContent = 'Não foi possível marcar como concluído.';
     }
-  }
+  });
 
   campo.addEventListener('input', (event) => {
     renderLista(event.target.value);

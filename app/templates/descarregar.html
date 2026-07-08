@@ -30,6 +30,17 @@
         </div>
     </div>
 
+    <div id="modal-confirmacao" class="modal-overlay" aria-hidden="true">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <h3 id="modal-title">Confirmar descida</h3>
+            <p id="modal-mensagem">Deseja mesmo descer este motorista?</p>
+            <div class="modal-actions">
+                <button id="modal-cancelar" class="btn-secondary" type="button">Cancelar</button>
+                <button id="modal-confirmar" class="btn-confirm" type="button">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
     <script defer src="{{ url_for('static', filename='api_descarregamento.js') }}"></script>
     <script defer src="{{ url_for('static', filename='menu.js') }}"></script>
 </body>
