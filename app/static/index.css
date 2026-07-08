@@ -52,24 +52,89 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px auto;
-    max-width: 520px;
+    max-width: 760px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 12px;
 }
 
 .label-index {
     font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
 .input-index {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
     border: 1px solid var(--cor-two);
     border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.secondary-link {
+    color: #1f3f74;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.status-message {
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.item-card {
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-info h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.item-info p {
+    margin: 0;
+    font-size: 0.92rem;
+}
+
+.btn-concluir {
+    background: #2d7d46;
+    color: #fff;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-concluir:hover {
+    background: #23643a;
+}
+
+.empty-state {
+    padding: 16px;
+    border-radius: 6px;
+    background: #efefef;
+    text-align: center;
 }
 
 .nav-menu {
@@ -129,6 +194,23 @@ body {
     pointer-events: auto;
 }
 
-#sugestoes mark { background: #ffea8a; color: #000; padding: 0 2px; border-radius: 2px; }
-#sugestoes [role="option"]:hover { background: #f5f7fb; }
-#sugestoes { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+@media (max-width: 640px) {
+    .item-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-concluir {
+        width: 100%;
+    }
+}
+
+.json-output {
+    background: #1f1f1f;
+    color: #f5f5f5;
+    padding: 14px;
+    border-radius: 8px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+}

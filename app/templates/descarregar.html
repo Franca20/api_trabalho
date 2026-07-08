@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de dados</title>
+    <title>Motoristas a descarregar</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
@@ -13,17 +13,23 @@
     </div>
     <nav class="nav-menu" id="side-menu" aria-label="Menu principal">
         <button id="menu-close" class="menu-close" aria-label="Fechar menu">×</button>
-        <a href="/">Motorista a descarregar</a>
+        <a href="/">Motoristas a descarregar</a>
+        <a href="/concluidos">Motoristas concluídos</a>
         <a href="/carregar">Motoristas a carregar</a>
     </nav>
     <div class="menu-overlay" id="menu-overlay"></div>
 
     <div class="container">
         <div class="card">
-            <label class="label-index">Motorista a descarregar</label>
-            <input id="consulta" class="input-index" type="text" placeholder="Digite sua consulta">
+            <label class="label-index">Motoristas a descarregar</label>
+            <p class="status-message">Busque por nome, placa ou estação e marque os que já foram concluídos.</p>
+            <input id="consulta" class="input-index" type="text" placeholder="Digite o nome do motorista ou placa">
+            <a class="secondary-link" href="/concluidos">Ver motoristas concluídos</a>
+            <div id="status-descarregar" class="status-message">Carregando...</div>
+            <div id="lista-descarregar" class="items-list"></div>
         </div>
     </div>
+
     <script defer src="{{ url_for('static', filename='api_descarregamento.js') }}"></script>
     <script defer src="{{ url_for('static', filename='menu.js') }}"></script>
 </body>

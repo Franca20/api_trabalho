@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motoristas concluídos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+    <div class="topbar">
+        <button id="menu-btn" class="hamburger" aria-label="Abrir menu">☰</button>
+        <span class="logo">Motoristas concluídos</span>
+    </div>
+    <nav class="nav-menu" id="side-menu" aria-label="Menu principal">
+        <button id="menu-close" class="menu-close" aria-label="Fechar menu">×</button>
+        <a href="/">Motoristas a descarregar</a>
+        <a href="/concluidos">Motoristas concluídos</a>
+        <a href="/carregar">Motoristas a carregar</a>
+    </nav>
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <div class="container">
+        <div class="card">
+            <label class="label-index">Motoristas concluídos</label>
+            <p class="status-message">Os registros ficam salvos em JSON para o momento.</p>
+            <pre id="json-concluidos" class="json-output">Carregando...</pre>
+        </div>
+    </div>
+
+    <script defer src="{{ url_for('static', filename='menu.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const output = document.getElementById('json-concluidos');
+            try {
+                const response = await fetch('/api/concluidos', { cache: 'no-store' });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const dados = await response.json();
+                output.textContent = JSON.stringify(dados, null, 2);
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                output.textContent = 'Não foi possível carregar os dados.';
+            }
+        });
+    </script>
+</body>
+</html>
