@@ -1,2 +1,13 @@
 [
+<<<<<<< HEAD
+=======
+  {
+    "lt": "LT00000000000",
+    "station": "Origem",
+    "driver": "Nome motorista",
+    "plates": [
+      "ABC1D23"
+    ]
+},
+>>>>>>> 0581bec (fix rebase)
 ]
