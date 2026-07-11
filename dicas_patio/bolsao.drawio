@@ -1,0 +1,64 @@
+<mxfile host="65bd71144e">
+    <diagram id="bolsao" name="Bolsão">
+        <mxGraphModel dx="622" dy="607" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="start" value="Início do turno&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="20" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="step1" value="1. Buscar carros com CPT (descarregamento + carregamento)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="110" width="260" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="step2" value="2. Buscar carros de carregamento (horário fixo)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="210" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="step2a" value="2.1 Carretas: 2h para carregar (ETA 14h -&amp;gt; carga, CPT 16h -&amp;gt; saída)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="300" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="step2b" value="2.2 Truck / Toco: 1h para carregar (ETA 14h -&amp;gt; carga, CPT 15h -&amp;gt; saída)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="300" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="step3" value="3. Procurar carros mais atrasados no bolsão\nSe não encontrar, acionar líder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="390" width="260" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="step4" value="4. Às vezes subir SPOT de carro que ainda tem que descarregar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="490" width="260" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="responseTitle" value="Resposta programada" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="740" y="20" width="240" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="resp1" value="1. Motorista: Tenho descarregar e carregar\nVocê: pedir SPX, verificar SOC PR1/PR4, usar CPT se local, senão avisar líder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="110" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="resp2" value="2. Motorista: Estou desde cedo e nada me chamam\nVocê: usar ETA para descarregar, se agendado errado avisar transportadora" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="230" width="300" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="resp3" value="3. Motorista: Tenho descarga e carga aqui, pode liberar?\nVocê: não pode liberar sem viagem setada pela mesma transportadora" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="360" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="resp4" value="4. Motorista: Meu pai tá morrendo, pode liberar?\nVocê: pedir prioridade pela transportadora; seguir regras, não prometer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="480" width="300" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;" parent="1" source="start" target="step1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;" parent="1" source="step1" target="step2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;" parent="1" source="step2" target="step2a" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;" parent="1" source="step2" target="step2b" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;" parent="1" source="step2" target="step3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;" parent="1" source="step3" target="step4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
