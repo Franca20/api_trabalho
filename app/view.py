@@ -1,6 +1,9 @@
+import base64
 from datetime import datetime
+from io import BytesIO
 from pathlib import Path
 
+import qrcode
 from flask import jsonify, render_template, request
 
 from app import app
@@ -75,6 +78,31 @@ def concluidos():
 @app.route('/carregar')
 def carregar():
     return render_template('carregar.html')
+
+
+@app.route('/qrcode')
+def qrcode_page():
+    return render_template('qrcode.html')
+
+
+@app.route('/api/lt/qr', methods=['POST'])
+def generate_lt_qr():
+    payload = request.get_json(silent=True) or {}
+    lt_value = str(payload.get('lt', '') or '').strip().upper()
+
+    if not lt_value:
+        return jsonify({'success': False, 'message': 'Informe a LT do motorista.'}), 400
+
+    qr = qrcode.QRCode(version=1, box_size=10, border=4)
+    qr.add_data(lt_value)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill_color='black', back_color='white')
+    buffered = BytesIO()
+    img.save(buffered, format='PNG')
+    encoded = base64.b64encode(buffered.getvalue()).decode('utf-8')
+
+    return jsonify({'success': True, 'lt': lt_value, 'qr_image': encoded, 'qr_text': lt_value})
 
 
 #  testes com api em js
