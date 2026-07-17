@@ -315,3 +315,8 @@ body {
     background: #fff;
     padding: 8px;
 }
+
+.meme {
+    text-align: center;
+    margin: 20px auto;
+}
