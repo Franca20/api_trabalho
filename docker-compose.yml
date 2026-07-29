@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    container_name: api_trabalho_web
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app:cached
+    environment:
+      - FLASK_ENV=production
+    restart: unless-stopped

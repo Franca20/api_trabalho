@@ -111,6 +111,64 @@ body {
     font-size: 1rem;
 }
 
+.concluidos-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.concluido-card {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.concluido-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: #1f3f74;
+}
+
+.concluido-card p {
+    margin: 0;
+    color: #333;
+    line-height: 1.4;
+}
+
+.concluido-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.concluido-meta span {
+    display: block;
+    font-size: 0.94rem;
+    color: #4b4b4b;
+}
+
+.concluido-chip {
+    display: inline-block;
+    background: #d1e7dd;
+    color: #0f5132;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .concluido-meta {
+        grid-template-columns: 1fr;
+    }
+}
+
 .item-info p {
     margin: 0;
     font-size: 0.92rem;
@@ -135,6 +193,46 @@ body {
     border-radius: 6px;
     background: #efefef;
     text-align: center;
+}
+
+.csv-action-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.csv-result-info {
+    color: #333;
+    font-size: 0.95rem;
+    margin-top: 12px;
+}
+
+#csv-table-container {
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 14px;
+}
+
+.csv-result-table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.csv-result-table th,
+.csv-result-table td {
+    border: 1px solid #d1d1d1;
+    padding: 10px;
+    text-align: left;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.csv-result-table th {
+    background: #e8e8e8;
 }
 
 .nav-menu {

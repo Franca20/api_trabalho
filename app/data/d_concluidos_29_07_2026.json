@@ -1,0 +1,29 @@
+[
+  {
+    "lt": "LT1Q7S02CIV01",
+    "station": "SoC_RJ_Jacarepagua",
+    "driver": "CARLOS ANTONIO SANTOS ARAUJO",
+    "plates": [
+      "BED8D60"
+    ],
+    "schedule": "28/07/2026 18:00",
+    "to": "23",
+    "LT": "LT1Q7S02CIV01",
+    "status": "concluido",
+    "concluido_em": "29/07/2026 04:22:27"
+  },
+  {
+    "lt": "LT0Q7S02C9YD1",
+    "station": "SoC_SP_Cravinhos",
+    "driver": "DARLEI RODRIGUES DE OLIVEIRA",
+    "plates": [
+      "UBN8B46",
+      "UBJ0D94"
+    ],
+    "schedule": "28/07/2026 20:30",
+    "to": "94",
+    "LT": "LT0Q7S02C9YD1",
+    "status": "concluido",
+    "concluido_em": "29/07/2026 01:25:06"
+  }
+]

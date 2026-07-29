@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Motoristas concluídos</title>
+    <title>Extrair dados do CSV</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
     <div class="topbar">
         <button id="menu-btn" class="hamburger" aria-label="Abrir menu">☰</button>
-        <span class="logo">Motoristas concluídos</span>
+        <span class="logo">Extrair CSV</span>
     </div>
     <nav class="nav-menu" id="side-menu" aria-label="Menu principal">
         <button id="menu-close" class="menu-close" aria-label="Fechar menu">×</button>
@@ -24,15 +24,20 @@
 
     <div class="container">
         <div class="card">
-            <label class="label-index">Motoristas concluídos</label>
-            <p class="status-message">Confira os motoristas marcados como concluídos hoje.</p>
-            <div id="concluidos-list" class="concluidos-list">
-                <div class="status-message">Carregando...</div>
+            <label class="label-index">Enviar CSV para extração</label>
+            <p class="status-message">Escolha seu arquivo CSV e extraia automaticamente os dados para visualização.</p>
+            <input id="csv-file" class="input-index" type="file" accept=".csv">
+            <div class="csv-action-row">
+                <button id="extract-btn" class="btn-confirm" type="button">Extrair dados</button>
+                <button id="clear-btn" class="btn-secondary" type="button">Limpar JSON</button>
+                <span id="csv-status" class="status-message">Nenhum arquivo selecionado.</span>
             </div>
+            <div id="csv-info" class="csv-result-info"></div>
+            <div id="csv-table-container"></div>
         </div>
     </div>
 
     <script defer src="{{ url_for('static', filename='menu.js') }}"></script>
-    <script defer src="{{ url_for('static', filename='concluidos.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='extrair_csv.js') }}"></script>
 </body>
 </html>
