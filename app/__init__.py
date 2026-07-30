@@ -1,9 +1,7 @@
 from flask import Flask
 from pathlib import Path
-from dotenv import load_dotenv
 
 base_dir = Path(__file__).parent
-load_dotenv(base_dir.parent / '.env')
 templates = base_dir / 'templates'
 static = base_dir / 'static'
 
