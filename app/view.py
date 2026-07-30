@@ -8,6 +8,7 @@ import qrcode
 from flask import jsonify, render_template, request
 
 from app import app
+from app.db import fetch_descarregamento_data, save_descarregamento_data
 from app.utils import load_data, save_data
 from app.data import extrair_dados_filtrados_conteudo
 
@@ -23,7 +24,9 @@ def concluded_file_path(date=None):
 
 
 def get_pending_data():
-    source_data = load_data(DATA_FILE)
+    source_data = fetch_descarregamento_data()
+    if not source_data:
+        source_data = load_data(DATA_FILE)
     completed_data = load_data(concluded_file_path())
     completed_ids = {str(item.get('LT', '')).strip() for item in completed_data if item.get('LT')}
     return [item for item in source_data if str(item.get('LT', '')).strip() not in completed_ids]
@@ -114,10 +117,21 @@ def api_extrair_csv():
     try:
         dados = extrair_dados_filtrados_conteudo(conteudo)
         save_data(DATA_FILE, dados)
+        save_descarregamento_data([
+            {
+                'lt': item.get('LT', '-'),
+                'station_name': item.get('Station Name', '-'),
+                'vehicle_plate_number': item.get('Vehicle Plate Number', '-'),
+                'driver': item.get('Driver', '-'),
+                'schedule_arrival_time': item.get('Schedule Arrival Time', '-'),
+                'to_value': item.get('TO', '-'),
+            }
+            for item in dados
+        ])
     except Exception as exc:
         return jsonify({'success': False, 'message': f'Erro ao processar CSV: {exc}'}), 500
 
-    return jsonify({'success': True, 'count': len(dados), 'data': dados, 'message': 'Dados extraídos e salvos em descarregamento.json'})
+    return jsonify({'success': True, 'count': len(dados), 'data': dados, 'message': 'Dados extraídos e salvos em descarregamento.json e no banco.'})
 
 
 @app.route('/api/limpar-descarregamento', methods=['POST'])
