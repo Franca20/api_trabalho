@@ -9,7 +9,8 @@ from flask import jsonify, render_template, request
 
 from app import app
 from app.utils import load_data, save_data
-from app.data import extrair_dados_filtrados_conteudo
+from app.escrever_dados_bd import main
+import tempfile
 
 BASE_DIR = Path(__file__).parent
 DATA_FILE = BASE_DIR / 'data/descarregamento.json'
@@ -101,6 +102,7 @@ def extrair_csv_page():
     return render_template('extrair_csv.html')
 
 
+
 @app.route('/api/extrair-csv', methods=['POST'])
 def api_extrair_csv():
     if 'file' not in request.files:
@@ -110,15 +112,17 @@ def api_extrair_csv():
     if arquivo.filename == '':
         return jsonify({'success': False, 'message': 'Nenhum arquivo selecionado.'}), 400
 
-    conteudo = arquivo.read().decode('utf-8-sig', errors='replace')
+    # cria arquivo temporário
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".csv") as tmp:
+        arquivo.save(tmp.name)
+        tmp_path = Path(tmp.name)
+
     try:
-        dados = extrair_dados_filtrados_conteudo(conteudo)
-        save_data(DATA_FILE, dados)
+        main(tmp_path)   # usa seu main sem mudar nada
     except Exception as exc:
         return jsonify({'success': False, 'message': f'Erro ao processar CSV: {exc}'}), 500
 
-    return jsonify({'success': True, 'count': len(dados), 'data': dados, 'message': 'Dados extraídos e salvos em descarregamento.json'})
-
+    return jsonify({'success': True, 'message': 'Dados extraídos e salvos no banco'})
 
 @app.route('/api/limpar-descarregamento', methods=['POST'])
 def limpar_descarregamento():
