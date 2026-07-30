@@ -8,6 +8,7 @@ import qrcode
 from flask import jsonify, render_template, request
 
 from app import app
+from app.db import fetch_descarregamento_data, save_descarregamento_data
 from app.utils import load_data, save_data
 from app.escrever_dados_bd import main
 import tempfile
@@ -24,7 +25,9 @@ def concluded_file_path(date=None):
 
 
 def get_pending_data():
-    source_data = load_data(DATA_FILE)
+    source_data = fetch_descarregamento_data()
+    if not source_data:
+        source_data = load_data(DATA_FILE)
     completed_data = load_data(concluded_file_path())
     completed_ids = {str(item.get('LT', '')).strip() for item in completed_data if item.get('LT')}
     return [item for item in source_data if str(item.get('LT', '')).strip() not in completed_ids]
