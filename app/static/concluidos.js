@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
+  const busca = document.getElementById('busca-concluidos');
   const lista = document.getElementById('concluidos-list');
+
+  let dadosConcluidos = [];
 
   function escapeHtml(value) {
     return String(value ?? '')
@@ -31,6 +34,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
   }
 
+  function filtrarConcluidos(query) {
+    const termo = String(query || '').trim().toLowerCase();
+    if (!termo) return dadosConcluidos;
+
+    return dadosConcluidos.filter((item) => {
+      const lt = String(item.LT || item.lt || '').toLowerCase();
+      const driver = String(item.driver || '').toLowerCase();
+      const placas = formatPlacas(item.plates || []).toLowerCase();
+      return lt.includes(termo) || driver.includes(termo) || placas.includes(termo);
+    });
+  }
+
   async function carregarConcluidos() {
     try {
       const response = await fetch('/api/concluidos', { cache: 'no-store' });
@@ -42,11 +57,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;
       }
 
-      lista.innerHTML = dados.map(criarCard).join('');
+      dadosConcluidos = dados;
+      lista.innerHTML = dadosConcluidos.map(criarCard).join('');
     } catch (error) {
       console.error('Erro ao carregar concluídos:', error);
       lista.innerHTML = '<div class="empty-state">Não foi possível carregar os dados.</div>';
     }
+  }
+
+  if (busca) {
+    busca.addEventListener('input', () => {
+      const filtrados = filtrarConcluidos(busca.value);
+      if (!filtrados.length) {
+        lista.innerHTML = '<div class="empty-state">Nenhum motorista concluído encontrado.</div>';
+        return;
+      }
+      lista.innerHTML = filtrados.map(criarCard).join('');
+    });
   }
 
   carregarConcluidos();

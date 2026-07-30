@@ -8,24 +8,18 @@ import qrcode
 from flask import jsonify, render_template, request
 
 from app import app
-from app.utils import load_data, save_data
+from app.db import fetch_descarregamento_data
+from app.utils import save_data
+from app.concluidos_bd import fetch_concluidos_by_date, save_concluded
 from app.escrever_dados_bd import main
 import tempfile
 
 BASE_DIR = Path(__file__).parent
-DATA_FILE = BASE_DIR / 'data/descarregamento.json'
-
-
-def concluded_file_path(date=None):
-    if date is None:
-        date = datetime.now()
-    date_text = date.strftime('%d_%m_%Y')
-    return BASE_DIR / 'data' / f'd_concluidos_{date_text}.json'
 
 
 def get_pending_data():
-    source_data = load_data(DATA_FILE)
-    completed_data = load_data(concluded_file_path())
+    source_data = fetch_descarregamento_data()
+    completed_data = fetch_concluidos_by_date()
     completed_ids = {str(item.get('LT', '')).strip() for item in completed_data if item.get('LT')}
     return [item for item in source_data if str(item.get('LT', '')).strip() not in completed_ids]
 
@@ -44,8 +38,7 @@ def concluir_descarregamento():
     if not item:
         return jsonify({'success': False, 'message': 'Nenhum motorista informado.'}), 400
 
-    completed_file = concluded_file_path()
-    completed_data = load_data(completed_file)
+    completed_data = fetch_concluidos_by_date()
     item_id = str(item.get('LT', '')).strip()
     completed_ids = {str(existing.get('LT', '')).strip() for existing in completed_data if existing.get('LT')}
 
@@ -54,20 +47,30 @@ def concluir_descarregamento():
 
     timezone_sp = ZoneInfo('America/Sao_Paulo')
     concluded_at = datetime.now(timezone_sp)
-    completed_entry = {
+
+    payload = {
         **item,
+        'LT': item.get('LT') or item.get('lt'),
+        'Station Name': item.get('Station Name') or item.get('station'),
+        'vehicle_plate_number': item.get('vehicle_plate_number') or (','.join(item.get('plates', [])) if isinstance(item.get('plates'), list) else None),
+        'Driver': item.get('Driver') or item.get('driver'),
+        'Schedule Arrival Time': item.get('Schedule Arrival Time') or item.get('schedule'),
+        'TO': item.get('TO') or item.get('to'),
         'status': 'concluido',
-        'concluido_em': concluded_at.strftime('%d/%m/%Y %H:%M:%S')
+        'concluido_em': concluded_at.strftime('%d/%m/%Y %H:%M:%S'),
     }
-    completed_data.append(completed_entry)
-    save_data(completed_file, completed_data)
 
-    return jsonify({'success': True, 'message': 'Motorista marcado como concluído.', 'completed': completed_entry})
+    try:
+        saved = save_concluded(payload, concluded_at=concluded_at)
+    except Exception as exc:
+        return jsonify({'success': False, 'message': f'Erro ao salvar no banco: {exc}'}), 500
 
+    return jsonify({'success': True, 'message': 'Motorista marcado como concluído.', 'completed': saved})
 
 @app.route('/api/concluidos', methods=['GET'])
 def get_concluidos():
-    return jsonify(load_data(concluded_file_path()))
+    concluidos = fetch_concluidos_by_date()
+    return jsonify(concluidos)
 
 
 @app.route('/api/carregamento', methods=['GET'])
@@ -127,7 +130,8 @@ def api_extrair_csv():
 @app.route('/api/limpar-descarregamento', methods=['POST'])
 def limpar_descarregamento():
     try:
-        save_data(DATA_FILE, [])
+        # limpar o JSON usado apenas como fallback local
+        save_data(BASE_DIR / 'data' / 'descarregamento.json', [])
         return jsonify({'success': True, 'message': 'descarregamento.json limpo com sucesso.'})
     except Exception as exc:
         return jsonify({'success': False, 'message': f'Erro ao limpar JSON: {exc}'}), 500

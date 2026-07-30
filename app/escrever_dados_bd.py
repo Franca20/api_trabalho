@@ -24,6 +24,20 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL não encontrado. Defina-o no arquivo .env ou nas variáveis de ambiente.")
 TABLE_NAME = "descarregamento"
+metadata = MetaData()
+
+descarregamento_table = Table(
+    TABLE_NAME,
+    metadata,
+    Column("id", Integer, primary_key=True, autoincrement=True),
+    Column("lt", String(128), nullable=False),
+    Column("station_name", String(255)),
+    Column("vehicle_plate_number", String(255)),
+    Column("driver", String(255)),
+    Column("schedule_arrival_time", String(128)),
+    Column("to_value", String(128)),
+    Column("created_at", DateTime, server_default=text("NOW()")),
+)
 
 
 def create_table(engine):
@@ -48,12 +62,12 @@ def build_records(csv_path: Path) -> list[dict[str, str]]:
     extracted = extrair_dados_filtrados(csv_path)
     return [
         {
-            "lt": item.get("LT", "-"),
-            "station_name": item.get("Station Name", "-"),
-            "vehicle_plate_number": item.get("Vehicle Plate Number", "-"),
-            "driver": item.get("Driver", "-"),
-            "schedule_arrival_time": item.get("Schedule Arrival Time", "-"),
-            "to_value": item.get("TO", "-"),
+            "lt": item.get("LT", "-").strip(),
+            "station_name": str(item.get("Station Name", "-")).strip(),
+            "vehicle_plate_number": str(item.get("Vehicle Plate Number", "-")).strip(),
+            "driver": str(item.get("Driver", "-")).strip(),
+            "schedule_arrival_time": str(item.get("Schedule Arrival Time", "-")).strip(),
+            "to_value": str(item.get("TO", "-")).strip(),
         }
         for item in extracted
     ]
@@ -74,7 +88,6 @@ def main(csv_path: Path) -> None:
         result = conn.execute(table.insert(), records)
         print(f"Inseridos {result.rowcount} registros na tabela '{TABLE_NAME}'.")
 
-    
     update_database()
 
 
