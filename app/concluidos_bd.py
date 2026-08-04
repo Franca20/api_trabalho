@@ -4,6 +4,7 @@ import os
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from dotenv import load_dotenv
 from sqlalchemy import (
@@ -61,7 +62,9 @@ def _normalize_lt(item: dict[str, Any]) -> str:
 
 def _cleanup_old_records(current_date: date | None = None) -> None:
     create_tables()
-    current_date = current_date or date.today()
+    if current_date is None:
+        timezone_sp = ZoneInfo('America/Sao_Paulo')
+        current_date = datetime.now(timezone_sp).date()
     try:
         with engine.begin() as conn:
             conn.execute(
@@ -164,7 +167,9 @@ def save_concluded(item: dict[str, Any], concluded_at: datetime | None = None) -
 
 def fetch_concluidos_by_date(target_date: date | None = None) -> list[dict[str, Any]]:
     create_tables()
-    target_date = target_date or date.today()
+    if target_date is None:
+        timezone_sp = ZoneInfo('America/Sao_Paulo')
+        target_date = datetime.now(timezone_sp).date()
     _cleanup_old_records(target_date)
 
     try:
@@ -200,7 +205,9 @@ def is_concluded(lt: str, target_date: date | None = None) -> bool:
     if not lt:
         return False
     create_tables()
-    target_date = target_date or date.today()
+    if target_date is None:
+        timezone_sp = ZoneInfo('America/Sao_Paulo')
+        target_date = datetime.now(timezone_sp).date()
     try:
         with engine.connect() as conn:
             result = conn.execute(
