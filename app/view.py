@@ -30,6 +30,11 @@ def get_data():
     return jsonify(get_pending_data())
 
 
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({'status': 'ok'})
+
+
 @app.route('/api/descarregar/concluir', methods=['POST'])
 def concluir_descarregamento():
     payload = request.get_json(silent=True) or {}
@@ -156,6 +161,12 @@ def generate_lt_qr():
 
     return jsonify({'success': True, 'lt': lt_value, 'qr_image': encoded, 'qr_text': lt_value})
 
+##############################################################################################
+
+
+@app.route('/mapa bolsao')
+def mapa_bolsao():
+    return render_template('mapa_bolsao.html')
 
 #  testes com api em js
 

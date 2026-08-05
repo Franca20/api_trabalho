@@ -16,6 +16,7 @@
         <a href="/">Motoristas a descarregar</a>
         <a href="/concluidos">Motoristas concluídos</a>
         <a href="/carregar">Motoristas a carregar</a>
+        <a href="/mapa bolsao">Mapa Bolsão</a>
         <a href="/qrcode">Gerar QR Code</a>
         <a href="/extrair-csv">Extrair CSV</a>
         <a href="https://github.com/Franca20/api_trabalho/blob/main/dicas_patio/bolsao.md" target="_blank" rel="noopener noreferrer">Dicas</a>
@@ -40,6 +41,17 @@
             <div class="modal-actions">
                 <button id="modal-cancelar" class="btn-secondary" type="button">Cancelar</button>
                 <button id="modal-confirmar" class="btn-confirm" type="button">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-vagas" class="modal-overlay" aria-hidden="true">
+        <div class="modal-box modal-large" role="dialog" aria-modal="true" aria-labelledby="modal-vagas-title">
+            <h3 id="modal-vagas-title">Selecionar vaga</h3>
+            <p id="modal-vagas-mensagem">Escolha uma vaga para atribuir o motorista.</p>
+            <div id="vaga-grid" class="vaga-grid"></div>
+            <div class="modal-actions">
+                <button id="modal-vagas-close" class="btn-secondary" type="button">Fechar</button>
             </div>
         </div>
     </div>
