@@ -140,8 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedItemForVaga = null;
   }
 
-  function buildVagaGrid() {
-    const assigned = JSON.parse(localStorage.getItem('assignedVagas') || '{}');
+  async function buildVagaGrid() {
+    const assigned = await fetchVagasFromDb();
     const totalVagas = 67;
     const leftButtons = [];
     const rightButtons = [];
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  function assignVaga(vagaIndex) {
+  async function assignVaga(vagaIndex) {
     if (!selectedItemForVaga) return;
     const plates = getPlates(selectedItemForVaga).join(', ') || 'sem placa';
     const assigned = {
@@ -183,9 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
       platesString: plates,
       'Vehicle Plate Number': plates
     };
-    saveAssignedVaga(vagaIndex, assigned);
+    await saveAssignedVaga(vagaIndex, assigned);
     status.textContent = `Motorista ${selectedItemForVaga.driver} atribuído à vaga ${vagaIndex}.`;
     fecharModalVagas();
+    await buildVagaGrid();
   }
 
   let selectedItemForVaga = null;
@@ -259,25 +260,53 @@ document.addEventListener('DOMContentLoaded', () => {
     renderLista(event.target.value);
   });
 
-  function saveAssignedVaga(vagaIndex, item) {
-    const existing = JSON.parse(localStorage.getItem('assignedVagas') || '{}');
-    existing[vagaIndex] = item;
-    localStorage.setItem('assignedVagas', JSON.stringify(existing));
+  async function fetchVagasFromDb() {
+    try {
+      const response = await fetch('/api/vagas', { cache: 'no-store' });
+      if (!response.ok) return {};
+      const vagas = await response.json();
+      return Object.fromEntries((Array.isArray(vagas) ? vagas : []).map((vaga) => {
+        const vagaKey = String(vaga.vaga_index ?? vaga['vagaIndex']);
+        const plates = Array.isArray(vaga.plates) ? vaga.plates : [vaga['Vehicle Plate Number'] || vaga.platesString || ''];
+        const normalized = {
+          ...vaga,
+          lt: vaga.lt ?? vaga.LT ?? '',
+          driver: vaga.driver ?? vaga.Driver ?? '',
+          station: vaga.station ?? vaga['Station Name'] ?? '',
+          schedule: vaga.schedule ?? vaga['Schedule Arrival Time'] ?? '',
+          to: vaga.to ?? vaga.TO ?? '',
+          plates,
+          platesString: vaga.platesString || (Array.isArray(vaga.plates) ? vaga.plates.join(', ') : vaga['Vehicle Plate Number'] || ''),
+          'Vehicle Plate Number': vaga['Vehicle Plate Number'] || vaga.platesString || ''
+        };
+        return [vagaKey, normalized];
+      }));
+    } catch (error) {
+      console.error('Erro ao carregar vagas do banco:', error);
+      return {};
+    }
   }
 
-  function removeAssignedVagaByLt(lt) {
-    const existing = JSON.parse(localStorage.getItem('assignedVagas') || '{}');
-    const vagaIndex = Object.entries(existing).find(([index, item]) => {
-      return item && (item.lt === lt || item.LT === lt || item?.raw?.LT === lt || item?.raw?.lt === lt);
-    })?.[0];
+  async function saveAssignedVaga(vagaIndex, item) {
+    const response = await fetch('/api/vagas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ vaga_index: Number(vagaIndex), item })
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.message || 'Erro ao salvar vaga no banco.');
+    return result.vaga;
+  }
 
-    if (vagaIndex) {
-      delete existing[vagaIndex];
-      localStorage.setItem('assignedVagas', JSON.stringify(existing));
-      return vagaIndex;
-    }
-
-    return null;
+  async function removeAssignedVagaByLt(lt) {
+    const response = await fetch('/api/vagas/remover', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lt })
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.message || 'Erro ao remover vaga do banco.');
+    return result.removed ? result.vaga_index || null : null;
   }
 
   lista.addEventListener('click', (event) => {

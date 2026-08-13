@@ -1,19 +1,36 @@
 
 const assignedDrivers = new Map();
 
-function loadAssignedDrivers() {
-  const saved = JSON.parse(localStorage.getItem('assignedVagas') || '{}');
-  Object.entries(saved).forEach(([vagaIndex, item]) => {
-    assignedDrivers.set(vagaIndex, item);
-    const vagaBtn = document.querySelector(`.infoBtn[data-index="${vagaIndex}"]`);
-    if (vagaBtn) {
-      const platesText = item.platesString
-        || (Array.isArray(item.plates)
-          ? item.plates.join(', ')
-          : item['Vehicle Plate Number'] || item.plates || 'sem placa');
-      vagaBtn.textContent = platesText;
-      vagaBtn.dataset.title = platesText;
-      vagaBtn.dataset.body = `Motorista atribuído à vaga ${vagaIndex}`;
+async function loadAssignedDrivers() {
+  assignedDrivers.clear();
+
+  try {
+    const response = await fetch('/api/vagas', { cache: 'no-store' });
+    const saved = await response.json();
+    const list = Array.isArray(saved) ? saved : [];
+
+    list.forEach((item) => {
+      const vagaIndex = String(item.vaga_index ?? item.vagaIndex ?? '');
+      if (!vagaIndex) return;
+      assignedDrivers.set(vagaIndex, item);
+      const vagaBtn = document.querySelector(`.infoBtn[data-index="${vagaIndex}"]`);
+      if (vagaBtn) {
+        const platesText = item.platesString
+          || (Array.isArray(item.plates)
+            ? item.plates.join(', ')
+            : item['Vehicle Plate Number'] || item.plates || 'sem placa');
+        vagaBtn.textContent = platesText;
+        vagaBtn.dataset.title = platesText;
+        vagaBtn.dataset.body = `Motorista atribuído à vaga ${vagaIndex}`;
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao carregar vagas do banco:', error);
+  }
+
+  document.querySelectorAll('.infoBtn').forEach((btn) => {
+    if (!assignedDrivers.has(btn.dataset.index)) {
+      updateVagaButton(btn.dataset.index);
     }
   });
 }
@@ -61,14 +78,23 @@ function updateVagaButton(vagaIndex) {
   vagaBtn.dataset.body = `Sem motorista atribuído à vaga ${vagaIndex}.`;
 }
 
-function removeAssignedVaga(vagaIndex) {
-  const saved = JSON.parse(localStorage.getItem('assignedVagas') || '{}');
-  if (!saved[vagaIndex]) return false;
-  delete saved[vagaIndex];
-  localStorage.setItem('assignedVagas', JSON.stringify(saved));
-  assignedDrivers.delete(vagaIndex);
-  updateVagaButton(vagaIndex);
-  return true;
+async function removeAssignedVaga(vagaIndex) {
+  try {
+    const response = await fetch('/api/vagas/remover', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ vaga_index: Number(vagaIndex) })
+    });
+    const result = await response.json();
+    if (!response.ok || !result.removed) return false;
+    assignedDrivers.delete(String(vagaIndex));
+    updateVagaButton(vagaIndex);
+    await loadAssignedDrivers();
+    return true;
+  } catch (error) {
+    console.error('Erro ao remover vaga do banco:', error);
+    return false;
+  }
 }
 
 function openVagaModal(button) {
@@ -108,12 +134,6 @@ document.addEventListener('click', function (e) {
   const btn = e.target.closest('.infoBtn');
   if (!btn) return;
   openVagaModal(btn);
-});
-
-window.addEventListener('storage', function (event) {
-  if (event.key !== 'assignedVagas') return;
-  assignedDrivers.clear();
-  loadAssignedDrivers();
 });
 
 loadAssignedDrivers();

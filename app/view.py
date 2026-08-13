@@ -8,7 +8,7 @@ import qrcode
 from flask import jsonify, render_template, request
 
 from app import app
-from app.db import fetch_descarregamento_data
+from app.db import fetch_descarregamento_data, fetch_vagas_assignments, remove_vaga_assignment, save_vaga_assignment
 from app.utils import save_data
 from app.concluidos_bd import fetch_concluidos_by_date, save_concluded
 from app.escrever_dados_bd import main
@@ -67,6 +67,8 @@ def concluir_descarregamento():
 
     try:
         saved = save_concluded(payload, concluded_at=concluded_at)
+        if item_id:
+            remove_vaga_assignment(lt=item_id)
     except Exception as exc:
         return jsonify({'success': False, 'message': f'Erro ao salvar no banco: {exc}'}), 500
 
@@ -76,6 +78,37 @@ def concluir_descarregamento():
 def get_concluidos():
     concluidos = fetch_concluidos_by_date()
     return jsonify(concluidos)
+
+
+@app.route('/api/vagas', methods=['GET'])
+def get_vagas():
+    return jsonify(fetch_vagas_assignments())
+
+
+@app.route('/api/vagas', methods=['POST'])
+def save_vaga():
+    payload = request.get_json(silent=True) or {}
+    vaga_index = payload.get('vaga_index')
+    item = payload.get('item') or {}
+
+    if vaga_index is None:
+        return jsonify({'success': False, 'message': 'Informe a vaga.'}), 400
+
+    saved = save_vaga_assignment(vaga_index, item)
+    return jsonify({'success': True, 'vaga': saved})
+
+
+@app.route('/api/vagas/remover', methods=['POST'])
+def remove_vaga():
+    payload = request.get_json(silent=True) or {}
+    vaga_index = payload.get('vaga_index')
+    lt = payload.get('lt')
+
+    if vaga_index is None and not lt:
+        return jsonify({'success': False, 'message': 'Informe a vaga ou a LT.'}), 400
+
+    removed = remove_vaga_assignment(vaga_index=vaga_index, lt=lt)
+    return jsonify({'success': True, 'removed': removed, 'vaga_index': int(vaga_index) if vaga_index is not None else None})
 
 
 @app.route('/api/carregamento', methods=['GET'])
