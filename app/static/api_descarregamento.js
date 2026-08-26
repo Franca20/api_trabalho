@@ -244,12 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       registros = registros.filter((registro) => registro.lt !== item.lt);
       renderLista(campo.value);
-      const vagaRemovida = removeAssignedVagaByLt(item.lt);
-      if (vagaRemovida) {
-        status.textContent = `Motorista ${item.driver} concluído e vaga ${vagaRemovida} liberada.`;
-      } else {
-        status.textContent = resultado.message;
-      }
+      await removeAssignedVagaByLt(item.lt);
+      const nomeMotorista = item.driver.replace(/^Motorista\s+/i, '');
+      status.textContent = `Motorista ${nomeMotorista} concluído`;
     } catch (error) {
       console.error('Erro ao concluir motorista:', error);
       status.textContent = 'Não foi possível marcar como concluído.';

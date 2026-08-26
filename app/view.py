@@ -2,7 +2,6 @@ import base64
 from datetime import datetime
 from io import BytesIO
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 import qrcode
 from flask import jsonify, render_template, request
@@ -10,7 +9,7 @@ from flask import jsonify, render_template, request
 from app import app
 from app.db import fetch_descarregamento_data, fetch_vagas_assignments, remove_vaga_assignment, save_vaga_assignment
 from app.utils import save_data
-from app.concluidos_bd import fetch_concluidos_by_date, save_concluded
+from app.concluidos_bd import PARANA_TIMEZONE, clear_concluidos, fetch_concluidos_by_date, save_concluded
 from app.escrever_dados_bd import main
 import tempfile
 
@@ -50,8 +49,7 @@ def concluir_descarregamento():
     if item_id and item_id in completed_ids:
         return jsonify({'success': True, 'message': 'Motorista já estava marcado.', 'already_completed': True})
 
-    timezone_sp = ZoneInfo('America/Sao_Paulo')
-    concluded_at = datetime.now(timezone_sp)
+    concluded_at = datetime.now(PARANA_TIMEZONE)
 
     payload = {
         **item,
@@ -78,6 +76,14 @@ def concluir_descarregamento():
 def get_concluidos():
     concluidos = fetch_concluidos_by_date()
     return jsonify(concluidos)
+
+
+@app.route('/api/concluidos/limpar', methods=['POST'])
+def limpar_concluidos():
+    payload = request.get_json(silent=True) or {}
+    if not clear_concluidos(payload.get('password', '')):
+        return jsonify({'success': False, 'message': 'Senha inválida.'}), 401
+    return jsonify({'success': True, 'message': 'Concluídos limpos com sucesso.'})
 
 
 @app.route('/api/vagas', methods=['GET'])

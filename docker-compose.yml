@@ -10,4 +10,5 @@ services:
       - .:/app:cached
     environment:
       - FLASK_ENV=production
+      - LIMPAR_CONCLUIDOS_SENHA=${LIMPAR_CONCLUIDOS_SENHA}
     restart: unless-stopped

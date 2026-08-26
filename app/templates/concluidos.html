@@ -26,7 +26,8 @@
     <div class="container">
         <div class="card">
             <label class="label-index">Motoristas concluídos</label>
-            <p class="status-message">Confira os motoristas marcados como concluídos hoje.</p>
+            <p class="status-message">Confira os motoristas marcados como concluídos.</p>
+            <button id="limpar-concluidos" class="btn-concluir btn-limpar-concluidos" type="button" onclick="limparConcluidos()">Limpar concluídos</button>
             <div class="search-wrapper">
                 <input id="busca-concluidos" class="input-index" type="search" placeholder="Buscar por LT, motorista ou placa" aria-label="Buscar motoristas concluídos">
             </div>
@@ -36,7 +37,19 @@
         </div>
     </div>
 
+    <div id="modal-limpar-concluidos" class="modal-overlay" aria-hidden="true">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-limpar-titulo">
+            <h3 id="modal-limpar-titulo">Limpar concluídos</h3>
+            <p>Digite a senha para apagar os motoristas concluídos.</p>
+            <input id="senha-limpar-concluidos" class="input-index" type="password" autocomplete="current-password">
+            <div class="modal-actions">
+                <button id="cancelar-limpar-concluidos" class="btn-secondary" type="button">Cancelar</button>
+                <button id="confirmar-limpar-concluidos" class="btn-confirm" type="button">Limpar</button>
+            </div>
+        </div>
+    </div>
+
     <script defer src="{{ url_for('static', filename='menu.js') }}"></script>
-    <script defer src="{{ url_for('static', filename='concluidos.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='concluidos.js', v='4') }}"></script>
 </body>
 </html>

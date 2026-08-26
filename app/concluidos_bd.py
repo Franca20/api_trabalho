@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import hmac
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
@@ -24,6 +25,8 @@ from sqlalchemy import (
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import SQLAlchemyError
 
+from app.utils import load_data, save_data
+
 load_dotenv(Path(__file__).resolve().parents[1] / '.env')
 
 DATABASE_URL = os.getenv("DATABASE_URL")
@@ -32,6 +35,8 @@ if not DATABASE_URL:
 
 engine: Engine = create_engine(DATABASE_URL, future=True)
 metadata = MetaData()
+CONCLUIDOS_FILE = Path(__file__).parent / 'data' / 'd_concluidos.json'
+PARANA_TIMEZONE = ZoneInfo('America/Sao_Paulo')
 
 motoristas_concluidos = Table(
     "motoristas_concluidos",
@@ -63,8 +68,7 @@ def _normalize_lt(item: dict[str, Any]) -> str:
 def _cleanup_old_records(current_date: date | None = None) -> None:
     create_tables()
     if current_date is None:
-        timezone_sp = ZoneInfo('America/Sao_Paulo')
-        current_date = datetime.now(timezone_sp).date()
+        current_date = datetime.now(PARANA_TIMEZONE).date()
     try:
         with engine.begin() as conn:
             conn.execute(
@@ -102,15 +106,11 @@ def _normalize_to_value(item: dict[str, Any]) -> str:
 
 
 def save_concluded(item: dict[str, Any], concluded_at: datetime | None = None) -> dict[str, Any]:
-    create_tables()
     lt = _normalize_lt(item)
     if not lt:
         raise ValueError("LT inválida para registro de concluído.")
 
-    concluded_at = concluded_at or datetime.now()
-    concluded_date = concluded_at.date()
-    _cleanup_old_records(concluded_date)
-
+    concluded_at = concluded_at or datetime.now(PARANA_TIMEZONE)
     record = {
         "lt": lt,
         "station_name": _normalize_station_value(item),
@@ -119,37 +119,15 @@ def save_concluded(item: dict[str, Any], concluded_at: datetime | None = None) -
         "schedule_arrival_time": _normalize_schedule_value(item),
         "to_value": _normalize_to_value(item),
         "status": str(item.get("status") or "concluido").strip(),
-        "concluded_at": concluded_at,
-        "concluded_date": concluded_date,
+        "concluido_em": concluded_at.strftime('%d/%m/%Y %H:%M:%S'),
     }
 
-    try:
-        with engine.begin() as conn:
-            existing = conn.execute(
-                select(motoristas_concluidos.c.id)
-                .where(
-                    and_(
-                        motoristas_concluidos.c.lt == lt,
-                        motoristas_concluidos.c.concluded_date == concluded_date,
-                    )
-                )
-            ).first()
-
-            if existing:
-                conn.execute(
-                    update(motoristas_concluidos)
-                    .where(
-                        and_(
-                            motoristas_concluidos.c.lt == lt,
-                            motoristas_concluidos.c.concluded_date == concluded_date,
-                        )
-                    )
-                    .values(**record)
-                )
-            else:
-                conn.execute(motoristas_concluidos.insert().values(**record))
-    except SQLAlchemyError as exc:
-        raise RuntimeError(f"[CONCLUIDOS_DB] Erro ao salvar registro de concluído: {exc}")
+    records = load_data(CONCLUIDOS_FILE)
+    if not isinstance(records, list):
+        records = []
+    records = [existing for existing in records if str(existing.get('LT') or existing.get('lt') or '').strip() != lt]
+    records.append(record)
+    save_data(CONCLUIDOS_FILE, records)
 
     plates = [plate.strip() for plate in record["vehicle_plate_number"].split(",") if plate.strip()]
     if not plates:
@@ -166,60 +144,40 @@ def save_concluded(item: dict[str, Any], concluded_at: datetime | None = None) -
 
 
 def fetch_concluidos_by_date(target_date: date | None = None) -> list[dict[str, Any]]:
-    create_tables()
-    if target_date is None:
-        timezone_sp = ZoneInfo('America/Sao_Paulo')
-        target_date = datetime.now(timezone_sp).date()
-    _cleanup_old_records(target_date)
-
-    try:
-        with engine.connect() as conn:
-            result = conn.execute(
-                select(motoristas_concluidos)
-                .where(motoristas_concluidos.c.concluded_date == target_date)
-            )
-            rows = result.fetchall()
-    except SQLAlchemyError as exc:
-        print(f"[CONCLUIDOS_DB] Erro ao buscar registros de concluídos: {exc}")
+    records = load_data(CONCLUIDOS_FILE)
+    if not isinstance(records, list):
         return []
 
-    records: list[dict[str, Any]] = []
-    for row in rows:
-        plates = [plate.strip() for plate in str(row.vehicle_plate_number or "").split(",") if plate.strip()]
+    normalized_records: list[dict[str, Any]] = []
+    for record in records:
+        plates_value = record.get('vehicle_plate_number') or record.get('plates') or ''
+        plates = plates_value if isinstance(plates_value, list) else str(plates_value).split(',')
+        plates = [plate.strip() for plate in plates if str(plate).strip()]
         if not plates:
             plates = ["-"]
-        records.append(
+        normalized_records.append(
             {
-                "LT": str(row.lt or "-"),
-                "driver": str(row.driver or "-"),
+                "LT": str(record.get('LT') or record.get('lt') or "-"),
+                "driver": str(record.get('driver') or record.get('Driver') or "-"),
                 "plates": plates,
-                "schedule": str(row.schedule_arrival_time or "-"),
-                "status": str(row.status or "concluido"),
-                "concluido_em": row.concluded_at.strftime('%d/%m/%Y %H:%M:%S') if row.concluded_at else "-",
+                "schedule": str(record.get('schedule_arrival_time') or record.get('schedule') or "-"),
+                "status": str(record.get('status') or "concluido"),
+                "concluido_em": str(record.get('concluido_em') or "-"),
             }
         )
-    return records
+    return normalized_records
 
 
 def is_concluded(lt: str, target_date: date | None = None) -> bool:
     if not lt:
         return False
-    create_tables()
-    if target_date is None:
-        timezone_sp = ZoneInfo('America/Sao_Paulo')
-        target_date = datetime.now(timezone_sp).date()
-    try:
-        with engine.connect() as conn:
-            result = conn.execute(
-                select(motoristas_concluidos.c.id)
-                .where(
-                    and_(
-                        motoristas_concluidos.c.lt == lt,
-                        motoristas_concluidos.c.concluded_date == target_date,
-                    )
-                )
-            )
-            return result.first() is not None
-    except SQLAlchemyError as exc:
-        print(f"[CONCLUIDOS_DB] Erro ao verificar concluído: {exc}")
+    normalized_lt = str(lt).strip()
+    return any(item.get('LT') == normalized_lt for item in fetch_concluidos_by_date())
+
+
+def clear_concluidos(password: str) -> bool:
+    expected_password = os.getenv('LIMPAR_CONCLUIDOS_SENHA', '')
+    if not expected_password or not hmac.compare_digest(str(password), expected_password):
         return False
+    save_data(CONCLUIDOS_FILE, [])
+    return True

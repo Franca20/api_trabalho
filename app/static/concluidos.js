@@ -1,6 +1,10 @@
-document.addEventListener('DOMContentLoaded', async () => {
+(() => {
   const busca = document.getElementById('busca-concluidos');
   const lista = document.getElementById('concluidos-list');
+  const modalLimpar = document.getElementById('modal-limpar-concluidos');
+  const senhaLimpar = document.getElementById('senha-limpar-concluidos');
+  const cancelarLimpar = document.getElementById('cancelar-limpar-concluidos');
+  const confirmarLimpar = document.getElementById('confirmar-limpar-concluidos');
 
   let dadosConcluidos = [];
 
@@ -65,6 +69,50 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
+  function fecharModalLimpar() {
+    modalLimpar.classList.remove('show');
+    modalLimpar.setAttribute('aria-hidden', 'true');
+    senhaLimpar.value = '';
+    document.body.style.overflow = '';
+  }
+
+  window.limparConcluidos = () => {
+    modalLimpar.classList.add('show');
+    modalLimpar.setAttribute('aria-hidden', 'false');
+    senhaLimpar.focus();
+    document.body.style.overflow = 'hidden';
+  };
+
+  async function confirmarLimpeza() {
+    const password = senhaLimpar.value;
+    if (!password) return;
+
+    try {
+      const response = await fetch('/api/concluidos/limpar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password })
+      });
+      const resultado = await response.json();
+      if (!response.ok) throw new Error(resultado.message || 'Não foi possível limpar os concluídos.');
+      dadosConcluidos = [];
+      lista.innerHTML = '<div class="empty-state">Nenhum motorista concluído encontrado.</div>';
+      fecharModalLimpar();
+      window.alert(resultado.message);
+    } catch (error) {
+      window.alert(error.message);
+    }
+  }
+
+  cancelarLimpar.addEventListener('click', fecharModalLimpar);
+  confirmarLimpar.addEventListener('click', confirmarLimpeza);
+  senhaLimpar.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') confirmarLimpeza();
+  });
+  modalLimpar.addEventListener('click', (event) => {
+    if (event.target === modalLimpar) fecharModalLimpar();
+  });
+
   if (busca) {
     busca.addEventListener('input', () => {
       const filtrados = filtrarConcluidos(busca.value);
@@ -77,4 +125,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   carregarConcluidos();
-});
+})();

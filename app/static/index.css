@@ -192,6 +192,11 @@ body {
     background: #23643a;
 }
 
+.btn-limpar-concluidos {
+    position: relative;
+    z-index: 20;
+}
+
 .vaga-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
