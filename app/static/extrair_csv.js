@@ -65,9 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error(resultado.message || 'Erro desconhecido');
       }
 
-      atualizarStatus(`${resultado.count} registro(s) extraído(s) e salvos em descarregamento.json`);
-      info.textContent = 'Os dados extraídos são exibidos abaixo. O arquivo descarregamento.json já foi atualizado.';
-      criarTabela(resultado.data);
+      atualizarStatus(`${resultado.count} motorista(s) extraído(s)`);
+      info.textContent = '';
+      tableContainer.innerHTML = '';
     } catch (error) {
       console.error('Erro ao extrair CSV:', error);
       atualizarStatus(String(error.message || 'Erro ao processar o CSV.'), true);

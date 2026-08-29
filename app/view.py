@@ -7,17 +7,20 @@ import qrcode
 from flask import jsonify, render_template, request
 
 from app import app
-from app.db import fetch_descarregamento_data, fetch_vagas_assignments, remove_vaga_assignment, save_vaga_assignment
-from app.utils import save_data
+from app.db import fetch_vagas_assignments, remove_vaga_assignment, save_vaga_assignment
+from app.utils import load_data, save_data
 from app.concluidos_bd import PARANA_TIMEZONE, clear_concluidos, fetch_concluidos_by_date, save_concluded
-from app.escrever_dados_bd import main
+from app.data.extrair_descarregamento import extrair_dados_filtrados
 import tempfile
 
 BASE_DIR = Path(__file__).parent
 
 
 def get_pending_data():
-    source_data = fetch_descarregamento_data()
+    source_data = load_data(BASE_DIR / 'data' / 'descarregamento.json')
+    if not isinstance(source_data, list):
+        return []
+
     completed_data = fetch_concluidos_by_date()
     completed_ids = {str(item.get('LT', '')).strip() for item in completed_data if item.get('LT')}
     return [item for item in source_data if str(item.get('LT', '')).strip() not in completed_ids]
@@ -165,11 +168,12 @@ def api_extrair_csv():
         tmp_path = Path(tmp.name)
 
     try:
-        main(tmp_path)   # usa seu main sem mudar nada
+        dados = extrair_dados_filtrados(tmp_path)
+        save_data(BASE_DIR / 'data' / 'descarregamento.json', dados)
     except Exception as exc:
         return jsonify({'success': False, 'message': f'Erro ao processar CSV: {exc}'}), 500
 
-    return jsonify({'success': True, 'message': 'Dados extraídos e salvos no banco'})
+    return jsonify({'success': True, 'message': 'Dados extraídos e salvos no JSON.', 'count': len(dados), 'data': dados})
 
 @app.route('/api/limpar-descarregamento', methods=['POST'])
 def limpar_descarregamento():
