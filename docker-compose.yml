@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   web:
@@ -6,9 +6,16 @@ services:
     container_name: api_trabalho_web
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app:cached
+    env_file:
+      - .env
     environment:
-      - FLASK_ENV=production
-      - LIMPAR_CONCLUIDOS_SENHA=${LIMPAR_CONCLUIDOS_SENHA}
+      FLASK_ENV: production
+      APP_DATA_DIR: /tmp/api_trabalho_data
+      LIMPAR_CONCLUIDOS_SENHA: ${LIMPAR_CONCLUIDOS_SENHA}
+    volumes:
+      - .:/app:ro
+      - api_data:/tmp/api_trabalho_data
     restart: unless-stopped
+
+volumes:
+  api_data:

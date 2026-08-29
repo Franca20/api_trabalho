@@ -1,7 +1,8 @@
 FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    APP_DATA_DIR=/tmp/api_trabalho_data
 
 WORKDIR /app
 
@@ -16,7 +17,9 @@ RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # criar usuário não-root e ajustar permissões
-RUN useradd --create-home appuser
+RUN useradd --create-home appuser && \
+    mkdir -p /tmp/api_trabalho_data && \
+    chown -R appuser:appuser /tmp/api_trabalho_data /app
 COPY --chown=appuser:appuser . .
 USER appuser
 

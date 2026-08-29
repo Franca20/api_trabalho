@@ -8,7 +8,7 @@ from flask import jsonify, render_template, request
 
 from app import app
 from app.db import fetch_vagas_assignments, remove_vaga_assignment, save_vaga_assignment
-from app.utils import load_data, save_data
+from app.utils import get_data_path, load_data, save_data
 from app.concluidos_bd import PARANA_TIMEZONE, clear_concluidos, fetch_concluidos_by_date, save_concluded
 from app.data.extrair_descarregamento import extrair_dados_filtrados
 import tempfile
@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).parent
 
 
 def get_pending_data():
-    source_data = load_data(BASE_DIR / 'data' / 'descarregamento.json')
+    source_data = load_data(get_data_path('descarregamento.json'))
     if not isinstance(source_data, list):
         return []
 
@@ -71,7 +71,7 @@ def concluir_descarregamento():
         if item_id:
             remove_vaga_assignment(lt=item_id)
     except Exception as exc:
-        return jsonify({'success': False, 'message': f'Erro ao salvar no banco: {exc}'}), 500
+        return jsonify({'success': False, 'message': f'Erro ao salvar no arquivo JSON: {exc}'}), 500
 
     return jsonify({'success': True, 'message': 'Motorista marcado como concluído.', 'completed': saved})
 
@@ -122,7 +122,7 @@ def remove_vaga():
 
 @app.route('/api/carregamento', methods=['GET'])
 def get_carregamento():
-    carregamento_file = BASE_DIR / 'data/carregamento.json'
+    carregamento_file = get_data_path('carregamento.json')
     carregamento = load_data(carregamento_file)
     return jsonify(carregamento)
 
@@ -169,7 +169,7 @@ def api_extrair_csv():
 
     try:
         dados = extrair_dados_filtrados(tmp_path)
-        save_data(BASE_DIR / 'data' / 'descarregamento.json', dados)
+        save_data(get_data_path('descarregamento.json'), dados)
     except Exception as exc:
         return jsonify({'success': False, 'message': f'Erro ao processar CSV: {exc}'}), 500
 
@@ -178,8 +178,7 @@ def api_extrair_csv():
 @app.route('/api/limpar-descarregamento', methods=['POST'])
 def limpar_descarregamento():
     try:
-        # limpar o JSON usado apenas como fallback local
-        save_data(BASE_DIR / 'data' / 'descarregamento.json', [])
+        save_data(get_data_path('descarregamento.json'), [])
         return jsonify({'success': True, 'message': 'descarregamento.json limpo com sucesso.'})
     except Exception as exc:
         return jsonify({'success': False, 'message': f'Erro ao limpar JSON: {exc}'}), 500

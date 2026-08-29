@@ -1,187 +1,127 @@
 from __future__ import annotations
 
-import os
-from pathlib import Path
 from typing import Any
 
-from dotenv import load_dotenv
-from sqlalchemy import (
-    Column,
-    DateTime,
-    Integer,
-    MetaData,
-    String,
-    Table,
-    create_engine,
-    delete,
-    insert,
-    select,
-    text,
-    update,
-)
-from sqlalchemy.engine import Engine
+from app.utils import get_data_path, load_data, save_data
 
-load_dotenv(Path(__file__).resolve().parents[1] / '.env')
-
-DATABASE_URL = os.getenv('DATABASE_URL')
-if not DATABASE_URL:
-    raise RuntimeError('DATABASE_URL não encontrado. Defina-o no arquivo .env ou nas variáveis de ambiente.')
-
-engine: Engine = create_engine(DATABASE_URL, future=True)
-metadata = MetaData()
-
-descarregamento = Table(
-    'descarregamento',
-    metadata,
-    Column('id', Integer, primary_key=True, autoincrement=True),
-    Column('lt', String(128), nullable=False),
-    Column('station_name', String(255)),
-    Column('vehicle_plate_number', String(255)),
-    Column('driver', String(255)),
-    Column('schedule_arrival_time', String(128)),
-    Column('to_value', String(128)),
-    Column('created_at', DateTime, server_default=text('NOW()')),
-)
-
-vagas = Table(
-    'vagas',
-    metadata,
-    Column('id', Integer, primary_key=True, autoincrement=True),
-    Column('vaga_index', Integer, nullable=False, unique=True),
-    Column('lt', String(128)),
-    Column('driver', String(255)),
-    Column('station_name', String(255)),
-    Column('vehicle_plate_number', String(255)),
-    Column('schedule_arrival_time', String(128)),
-    Column('to_value', String(128)),
-    Column('plates', String(255)),
-    Column('created_at', DateTime, server_default=text('NOW()')),
-)
+VAGAS_FILE = get_data_path('vagas.json')
 
 
-def create_tables() -> None:
-    metadata.create_all(engine)
+def _normalize_plates(value: Any) -> list[str]:
+    if isinstance(value, list):
+        parts = [str(item).strip() for item in value if str(item).strip()]
+    elif value is None:
+        parts = []
+    else:
+        parts = [part.strip() for part in str(value).split(',') if part.strip()]
+    return parts
 
 
 def _clean_plate_value(value: Any) -> str:
-    if isinstance(value, list):
-        return ','.join(str(item).strip() for item in value if str(item).strip())
-    if value is None:
-        return ''
-    return str(value).strip()
+    return ','.join(_normalize_plates(value))
 
 
 def fetch_descarregamento_data() -> list[dict[str, Any]]:
-    try:
-        create_tables()
-        with engine.connect() as conn:
-            result = conn.execute(select(descarregamento))
-            rows = result.fetchall()
-    except Exception as exc:
-        print(f'[DB] Erro ao buscar dados de descarregamento: {exc}')
-        return []
-
-    return [
-        {
-            'LT': row.lt or '',
-            'Station Name': row.station_name or '',
-            'Vehicle Plate Number': row.vehicle_plate_number or '',
-            'Driver': row.driver or '',
-            'Schedule Arrival Time': row.schedule_arrival_time or '',
-            'TO': row.to_value or '',
-        }
-        for row in rows
-    ]
+    return load_data(get_data_path('descarregamento.json'))
 
 
 def fetch_vagas_assignments() -> list[dict[str, Any]]:
-    try:
-        create_tables()
-        with engine.connect() as conn:
-            result = conn.execute(select(vagas).order_by(vagas.c.vaga_index.asc()))
-            rows = result.fetchall()
-    except Exception as exc:
-        print(f'[DB] Erro ao buscar vagas: {exc}')
+    records = load_data(VAGAS_FILE)
+    if not isinstance(records, list):
         return []
 
-    records: list[dict[str, Any]] = []
-    for row in rows:
-        plates_value = row.plates or row.vehicle_plate_number or ''
-        plates = [plate.strip() for plate in str(plates_value).split(',') if plate.strip()]
-        if not plates and row.vehicle_plate_number:
-            plates = [row.vehicle_plate_number]
+    normalized: list[dict[str, Any]] = []
+    for record in records:
+        plates = _normalize_plates(record.get('plates') or record.get('Vehicle Plate Number') or record.get('vehicle_plate_number'))
+        if not plates and record.get('Vehicle Plate Number'):
+            plates = _normalize_plates(record.get('Vehicle Plate Number'))
 
-        records.append({
-            'vaga_index': row.vaga_index,
-            'lt': row.lt or '',
-            'LT': row.lt or '',
-            'driver': row.driver or '',
-            'Driver': row.driver or '',
-            'station': row.station_name or '',
-            'Station Name': row.station_name or '',
-            'schedule': row.schedule_arrival_time or '',
-            'Schedule Arrival Time': row.schedule_arrival_time or '',
-            'to': row.to_value or '',
-            'TO': row.to_value or '',
+        normalized.append({
+            'vaga_index': int(record.get('vaga_index') or 0),
+            'lt': str(record.get('lt') or record.get('LT') or '').strip(),
+            'LT': str(record.get('LT') or record.get('lt') or '').strip(),
+            'driver': str(record.get('driver') or record.get('Driver') or '').strip(),
+            'Driver': str(record.get('Driver') or record.get('driver') or '').strip(),
+            'station': str(record.get('station') or record.get('Station Name') or '').strip(),
+            'Station Name': str(record.get('Station Name') or record.get('station') or '').strip(),
+            'schedule': str(record.get('schedule') or record.get('Schedule Arrival Time') or '').strip(),
+            'Schedule Arrival Time': str(record.get('Schedule Arrival Time') or record.get('schedule') or '').strip(),
+            'to': str(record.get('to') or record.get('TO') or '').strip(),
+            'TO': str(record.get('TO') or record.get('to') or '').strip(),
             'plates': plates,
-            'Vehicle Plate Number': row.vehicle_plate_number or '',
+            'Vehicle Plate Number': ', '.join(plates),
             'platesString': ', '.join(plates),
         })
-    return records
+
+    return sorted(normalized, key=lambda item: int(item.get('vaga_index') or 0))
 
 
 def save_vaga_assignment(vaga_index: int, item: dict[str, Any]) -> dict[str, Any]:
-    create_tables()
     vaga_number = int(vaga_index)
     record = {
         'vaga_index': vaga_number,
         'lt': str(item.get('LT') or item.get('lt') or '').strip(),
+        'LT': str(item.get('LT') or item.get('lt') or '').strip(),
         'driver': str(item.get('Driver') or item.get('driver') or '').strip(),
-        'station_name': str(item.get('Station Name') or item.get('station_name') or item.get('station') or '').strip(),
-        'vehicle_plate_number': _clean_plate_value(item.get('Vehicle Plate Number') or item.get('vehicle_plate_number') or item.get('plates')),
-        'schedule_arrival_time': str(item.get('Schedule Arrival Time') or item.get('schedule_arrival_time') or item.get('schedule') or '').strip(),
-        'to_value': str(item.get('TO') or item.get('to_value') or item.get('to') or '').strip(),
-        'plates': _clean_plate_value(item.get('plates') or item.get('Vehicle Plate Number') or item.get('vehicle_plate_number')),
+        'Driver': str(item.get('Driver') or item.get('driver') or '').strip(),
+        'station': str(item.get('Station Name') or item.get('station_name') or item.get('station') or '').strip(),
+        'Station Name': str(item.get('Station Name') or item.get('station_name') or item.get('station') or '').strip(),
+        'schedule': str(item.get('Schedule Arrival Time') or item.get('schedule_arrival_time') or item.get('schedule') or '').strip(),
+        'Schedule Arrival Time': str(item.get('Schedule Arrival Time') or item.get('schedule_arrival_time') or item.get('schedule') or '').strip(),
+        'to': str(item.get('TO') or item.get('to_value') or item.get('to') or '').strip(),
+        'TO': str(item.get('TO') or item.get('to_value') or item.get('to') or '').strip(),
+        'plates': _normalize_plates(item.get('plates') or item.get('Vehicle Plate Number') or item.get('vehicle_plate_number')),
+        'Vehicle Plate Number': _clean_plate_value(item.get('Vehicle Plate Number') or item.get('vehicle_plate_number') or item.get('plates')),
     }
 
-    with engine.begin() as conn:
-        existing = conn.execute(select(vagas.c.id).where(vagas.c.vaga_index == vaga_number)).first()
-        if existing:
-            conn.execute(update(vagas).where(vagas.c.vaga_index == vaga_number).values(**record))
-        else:
-            conn.execute(insert(vagas).values(**record))
+    records = load_data(VAGAS_FILE)
+    if not isinstance(records, list):
+        records = []
 
-    plates = [plate.strip() for plate in record['plates'].split(',') if plate.strip()]
-    if not plates and record['vehicle_plate_number']:
-        plates = [record['vehicle_plate_number']]
+    existing_index = next((idx for idx, existing in enumerate(records) if int(existing.get('vaga_index') or 0) == vaga_number), None)
+    if existing_index is not None:
+        records[existing_index] = record
+    else:
+        records.append(record)
 
+    save_data(VAGAS_FILE, records)
+
+    plates = record['plates']
     return {
         'vaga_index': vaga_number,
         'lt': record['lt'],
         'driver': record['driver'],
-        'station': record['station_name'],
-        'schedule': record['schedule_arrival_time'],
-        'to': record['to_value'],
+        'station': record['station'],
+        'schedule': record['schedule'],
+        'to': record['to'],
         'plates': plates,
-        'Vehicle Plate Number': record['vehicle_plate_number'],
-        'platesString': record['plates'] or record['vehicle_plate_number'],
+        'Vehicle Plate Number': record['Vehicle Plate Number'],
+        'platesString': ', '.join(plates),
     }
 
 
 def remove_vaga_assignment(vaga_index: int | None = None, lt: str | None = None) -> bool:
-    create_tables()
     if vaga_index is None and not lt:
         return False
 
-    try:
-        with engine.begin() as conn:
-            if vaga_index is not None:
-                result = conn.execute(delete(vagas).where(vagas.c.vaga_index == int(vaga_index)))
-            elif lt is not None:
-                result = conn.execute(delete(vagas).where(vagas.c.lt == str(lt).strip()))
-            else:
-                result = None
-        return bool(result and getattr(result, 'rowcount', 0) > 0)
-    except Exception as exc:
-        print(f'[DB] Erro ao remover vaga: {exc}')
+    records = load_data(VAGAS_FILE)
+    if not isinstance(records, list):
         return False
+
+    filtered = []
+    removed = False
+    for record in records:
+        current_vaga = record.get('vaga_index')
+        current_lt = str(record.get('lt') or record.get('LT') or '').strip()
+        if vaga_index is not None and current_vaga == int(vaga_index):
+            removed = True
+            continue
+        if lt is not None and current_lt == str(lt).strip():
+            removed = True
+            continue
+        filtered.append(record)
+
+    if removed:
+        save_data(VAGAS_FILE, filtered)
+
+    return removed
